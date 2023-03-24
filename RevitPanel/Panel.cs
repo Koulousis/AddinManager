@@ -20,8 +20,8 @@ namespace RevitPanel
 		public Result OnStartup(UIControlledApplication application)
 		{
 			#region Add-ins
-			//Add-in data #1
-			AddinAttr addinAttr = new AddinAttr()
+			//Add-in Structure Selector
+			AddinAttr structureSelectorAttr = new AddinAttr()
 			{
 				Name = "Structure Selector",
 				Title = "Structure Selector",
@@ -33,54 +33,173 @@ namespace RevitPanel
 				Image = File.Exists(GetImagePath("structureSelector16x16.png")) ? new BitmapImage(new Uri(GetImagePath("structureSelector16x16.png"))) : null,
 				LargeImage = File.Exists(GetLargeImagePath("structureSelector32x32.png")) ? new BitmapImage(new Uri(GetLargeImagePath("structureSelector32x32.png"))) : null
 			};
-			PushButtonData addinData = CreateButtonData(addinAttr);
+			PushButtonData structureSelectorData = CreateButtonData(structureSelectorAttr);
 
-			//Add-in data #2
+			//Add-in ODM Brackets
+			AddinAttr odmBracketsAttr = new AddinAttr()
+			{
+				Name = "ODM Brackets",
+				Title = "ODM Brackets",
+				AssemblyPath = @"J:\Drawings REVIT FAMILIES\02 NEW\Aris\Addins\PetersimeV2\DLLs\SuspensionMarkers.dll",
+				ClassName = "SuspensionMarkers.ODMbrackets",
+				ToolTip = "Place all the suspension markers for ODM brackets + distance to roof",
+				LongDescription = "",
+				Image = File.Exists(GetImagePath("odmBrackets16x16.png")) ? new BitmapImage(new Uri(GetImagePath("odmBrackets16x16.png"))) : null,
+				LargeImage = File.Exists(GetLargeImagePath("odmBrackets32x32.png")) ? new BitmapImage(new Uri(GetLargeImagePath("odmBrackets32x32.png"))) : null
+			};
+			PushButtonData odmBracketsData = CreateButtonData(odmBracketsAttr);
 
-			//Add-in data #3
+			//Add-in R7 Rails
+			AddinAttr r7RailsAttr = new AddinAttr()
+			{
+				Name = "R7 Rails",
+				Title = "R7 Rails",
+				AssemblyPath = @"J:\Drawings REVIT FAMILIES\02 NEW\Aris\Addins\PetersimeV2\DLLs\SuspensionMarkers.dll",
+				ClassName = "SuspensionMarkers.R7Rails",
+				ToolTip = "Place all the suspension markers for R7 rails under rectangular ducts + distance to roof",
+				LongDescription = "",
+				Image = File.Exists(GetImagePath("r7Rails16x16.png")) ? new BitmapImage(new Uri(GetImagePath("r7Rails16x16.png"))) : null,
+				LargeImage = File.Exists(GetLargeImagePath("r7Rails32x32.png")) ? new BitmapImage(new Uri(GetLargeImagePath("r7Rails32x32.png"))) : null
+			};
+			PushButtonData r7RailsData = CreateButtonData(r7RailsAttr);
 
-			//Add-in data #n
+			//Add-in Duct through ceiling
+			AddinAttr ductThroughCeilingAttr = new AddinAttr()
+			{
+				Name = "Duct through ceiling",
+				Title = "Duct through ceiling",
+				AssemblyPath = @"J:\Drawings REVIT FAMILIES\02 NEW\Aris\Addins\PetersimeV2\DLLs\SuspensionMarkers.dll",
+				ClassName = "SuspensionMarkers.DuctTroughCeiling",
+				ToolTip = "Place all the suspension markers for R7 rails under rectangular ducts + distance to roof",
+				LongDescription = "",
+				Image = File.Exists(GetImagePath("ductThroughCeiling16x16.png")) ? new BitmapImage(new Uri(GetImagePath("ductThroughCeiling16x16.png"))) : null,
+				LargeImage = File.Exists(GetLargeImagePath("ductThroughCeiling32x32.png")) ? new BitmapImage(new Uri(GetLargeImagePath("ductThroughCeiling32x32.png"))) : null
+			};
+			PushButtonData ductThroughCeilingData = CreateButtonData(ductThroughCeilingAttr);
+
+			//Add-in Duct through wall
+			AddinAttr ductThroughWallAttr = new AddinAttr()
+			{
+				Name = "Duct through wall",
+				Title = "Duct through wall",
+				AssemblyPath = @"J:\Drawings REVIT FAMILIES\02 NEW\Aris\Addins\PetersimeV2\DLLs\SuspensionMarkers.dll",
+				ClassName = "SuspensionMarkers.DuctTroughWall",
+				ToolTip = "Place all the suspension markers for ducts through walls",
+				LongDescription = "",
+				Image = File.Exists(GetImagePath("ductThroughWall16x16.png")) ? new BitmapImage(new Uri(GetImagePath("ductThroughWall16x16.png"))) : null,
+				LargeImage = File.Exists(GetLargeImagePath("ductThroughWall32x32.png")) ? new BitmapImage(new Uri(GetLargeImagePath("ductThroughWall32x32.png"))) : null
+			};
+			PushButtonData ductThroughWallData = CreateButtonData(ductThroughWallAttr);
+
+			//Add-in Ventilator on duct
+			AddinAttr ventilatorOnDuctAttr = new AddinAttr()
+			{
+				Name = "Ventilator on duct",
+				Title = "Ventilator on duct",
+				AssemblyPath = @"J:\Drawings REVIT FAMILIES\02 NEW\Aris\Addins\PetersimeV2\DLLs\SuspensionMarkers.dll",
+				ClassName = "SuspensionMarkers.VentilatorOnDuct",
+				ToolTip = "Place all the suspension markers for ventilators on ducts",
+				LongDescription = "",
+				Image = File.Exists(GetImagePath("ventilatorOnDuct16x16.png")) ? new BitmapImage(new Uri(GetImagePath("ventilatorOnDuct16x16.png"))) : null,
+				LargeImage = File.Exists(GetLargeImagePath("ventilatorOnDuct32x32.png")) ? new BitmapImage(new Uri(GetLargeImagePath("ventilatorOnDuct32x32.png"))) : null
+			};
+			PushButtonData ventilatorOnDuctData = CreateButtonData(ventilatorOnDuctAttr);
+
+			//Add-in Quantities
+			AddinAttr quantitiesAttr = new AddinAttr()
+			{
+				Name = "Quantities",
+				Title = "Quantities",
+				AssemblyPath = @"J:\Drawings REVIT FAMILIES\02 NEW\Aris\Addins\PetersimeV2\DLLs\SuspensionMarkers.dll",
+				ClassName = "SuspensionMarkers.Quantities",
+				ToolTip = "Fill in total quantities",
+				LongDescription = "",
+				Image = File.Exists(GetImagePath("quantities16x16.png")) ? new BitmapImage(new Uri(GetImagePath("quantities16x16.png"))) : null,
+				LargeImage = File.Exists(GetLargeImagePath("quantities32x32.png")) ? new BitmapImage(new Uri(GetLargeImagePath("quantities32x32.png"))) : null
+			};
+			PushButtonData quantitiesData = CreateButtonData(quantitiesAttr);
 			#endregion
 
 			#region UI Elements
 			//Ribbon panel
 			application.CreateRibbonTab("Petersime");
-			RibbonPanel ribbonPanel = application.CreateRibbonPanel("Petersime", "PETERSIME V2");
+			RibbonPanel toolsPanel = application.CreateRibbonPanel("Petersime", "Tools");
+			RibbonPanel mechanicalPanel = application.CreateRibbonPanel("Petersime", "Mechanical");
+			RibbonPanel electricalPanel = application.CreateRibbonPanel("Petersime", "Electrical");
+			RibbonPanel plumbingPanel = application.CreateRibbonPanel("Petersime", "Plumbing");
+			RibbonPanel dataPanel = application.CreateRibbonPanel("Petersime", "Data");
+			RibbonPanel planPanel = application.CreateRibbonPanel("Petersime", "Plan");
 
 			//Push buttons
-			CreateRibbonPushButton(ribbonPanel, addinData);
-
-			//Split buttons
-			/*SplitButtonAttr splitButtonAttr = new SplitButtonAttr()
-			{
-				Name = "splitButton",
-				Title = "button",
-				ToolTip = "Description",
-				LongDescription = "Long description",
-				Image = File.Exists(GetImagePath("Bitmap 16x16.png")) ? new BitmapImage(new Uri(GetImagePath("Bitmap 16x16.png"))) : null,
-				LargeImage = File.Exists(GetLargeImagePath("Bitmap 32x32.png")) ? new BitmapImage(new Uri(GetLargeImagePath("Bitmap 32x32.png"))) : null
-			};
-			SplitButtonData splitButtonData = CreateSplitButtonData(splitButtonAttr);
-			CreateRibbonSplitButtons(ribbonPanel, splitButtonData, new List<PushButtonData>() { addinData });*/
-
+			CreateRibbonPushButton(toolsPanel, structureSelectorData);
+			
 			//Pulldown buttons
-			/*PulldownButtonAttr pulldownButtonAttr = new PulldownButtonAttr()
+			//Suspension
+			PulldownButtonAttr suspensionPulldownButtonAttr = new PulldownButtonAttr()
 			{
-				Name = "pulldownButton",
-				Title = "button",
-				ToolTip = "Description",
-				LongDescription = "Long description",
-				Image = File.Exists(GetImagePath("Bitmap 16x16.png")) ? new BitmapImage(new Uri(GetImagePath("Bitmap 16x16.png"))) : null,
-				LargeImage = File.Exists(GetLargeImagePath("Bitmap 32x32.png")) ? new BitmapImage(new Uri(GetLargeImagePath("Bitmap 32x32.png"))) : null
+				Name = "Suspension",
+				Title = "Suspension",
+				ToolTip = "Suspension add-ins",
+				LongDescription = "",
+				Image = File.Exists(GetImagePath("suspension16x16.png")) ? new BitmapImage(new Uri(GetImagePath("suspension16x16.png"))) : null,
+				LargeImage = File.Exists(GetLargeImagePath("suspension32x32.png")) ? new BitmapImage(new Uri(GetLargeImagePath("suspension32x32.png"))) : null
 			};
-			PulldownButtonData pulldownButtonData = CreatePulldownButtonData(pulldownButtonAttr);
-			CreateRibbonPulldownButtons(ribbonPanel, pulldownButtonData, new List<PushButtonData>() { addinData });*/
-			
-			//CreateComboBox(ribbonPanel);
+			PulldownButtonData suspensionPulldownButtonData = CreatePulldownButtonData(suspensionPulldownButtonAttr);
+			CreateRibbonPulldownButtons(mechanicalPanel, suspensionPulldownButtonData, new List<PushButtonData>() { odmBracketsData, r7RailsData, ductThroughCeilingData, ductThroughWallData, ventilatorOnDuctData, quantitiesData });
 
-			//CreateTextBox(ribbonPanel);
+			//Duct split
+			PulldownButtonAttr ductSplitPulldownButtonAttr = new PulldownButtonAttr()
+			{
+				Name = "Duct split",
+				Title = "Duct split",
+				ToolTip = "Duct split add-ins",
+				LongDescription = "",
+				Image = File.Exists(GetImagePath("ductSplit16x16.png")) ? new BitmapImage(new Uri(GetImagePath("ductSplit16x16.png"))) : null,
+				LargeImage = File.Exists(GetLargeImagePath("ductSplit32x32.png")) ? new BitmapImage(new Uri(GetLargeImagePath("ductSplit32x32.png"))) : null
+			};
+			PulldownButtonData ductSplitPulldownButtonData = CreatePulldownButtonData(ductSplitPulldownButtonAttr);
+			CreateRibbonPulldownButtons(mechanicalPanel, ductSplitPulldownButtonData, new List<PushButtonData>() { });
+
+			//Exhausts
+			PulldownButtonAttr exhaustsPulldownButtonAttr = new PulldownButtonAttr()
+			{
+				Name = "Exhausts",
+				Title = "Exhausts",
+				ToolTip = "Exhausts add-ins",
+				LongDescription = "",
+				Image = File.Exists(GetImagePath("exhausts16x16.png")) ? new BitmapImage(new Uri(GetImagePath("exhausts16x16.png"))) : null,
+				LargeImage = File.Exists(GetLargeImagePath("exhausts32x32.png")) ? new BitmapImage(new Uri(GetLargeImagePath("exhausts32x32.png"))) : null
+			};
+			PulldownButtonData exhaustsPulldownButtonData = CreatePulldownButtonData(exhaustsPulldownButtonAttr);
+			CreateRibbonPulldownButtons(mechanicalPanel, exhaustsPulldownButtonData, new List<PushButtonData>() { });
+
+			//AHU
+			PulldownButtonAttr ahuPulldownButtonAttr = new PulldownButtonAttr()
+			{
+				Name = "AHU",
+				Title = "AHU",
+				ToolTip = "AHU add-ins",
+				LongDescription = "",
+				Image = File.Exists(GetImagePath("ahu16x16.png")) ? new BitmapImage(new Uri(GetImagePath("ahu16x16.png"))) : null,
+				LargeImage = File.Exists(GetLargeImagePath("ahu32x32.png")) ? new BitmapImage(new Uri(GetLargeImagePath("ahu32x32.png"))) : null
+			};
+			PulldownButtonData ahuPulldownButtonData = CreatePulldownButtonData(ahuPulldownButtonAttr);
+			CreateRibbonPulldownButtons(mechanicalPanel, ahuPulldownButtonData, new List<PushButtonData>() { });
+
+			//Accessories
+			PulldownButtonAttr accessoriesPulldownButtonAttr = new PulldownButtonAttr()
+			{
+				Name = "Accessories",
+				Title = "Accessories",
+				ToolTip = "Accessories add-ins",
+				LongDescription = "",
+				Image = File.Exists(GetImagePath("ahu16x16.png")) ? new BitmapImage(new Uri(GetImagePath("ahu16x16.png"))) : null,
+				LargeImage = File.Exists(GetLargeImagePath("ahu32x32.png")) ? new BitmapImage(new Uri(GetLargeImagePath("ahu32x32.png"))) : null
+			};
+			PulldownButtonData accessoriesPulldownButtonData = CreatePulldownButtonData(accessoriesPulldownButtonAttr);
+			CreateRibbonPulldownButtons(mechanicalPanel, accessoriesPulldownButtonData, new List<PushButtonData>() { });
 			#endregion
-			
+
 			return Result.Succeeded;
 		}
 
