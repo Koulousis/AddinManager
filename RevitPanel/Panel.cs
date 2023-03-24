@@ -19,19 +19,22 @@ namespace RevitPanel
 	{
 		public Result OnStartup(UIControlledApplication application)
 		{
+			#region Variables
+			const string dllFolder = @"J:\Drawings REVIT FAMILIES\02 NEW\Aris\Addins\PetersimeV2\DLLs";
+			#endregion
+
 			#region Add-ins
 			//Add-in Structure Selector
 			AddinAttr structureSelectorAttr = new AddinAttr()
 			{
 				Name = "Structure Selector",
 				Title = "Structure Selector",
-				AssemblyPath = @"J:\Drawings REVIT FAMILIES\02 NEW\Aris\Addins\PetersimeV2\DLLs\StructureSelector.dll",
+				AssemblyPath = $@"{dllFolder}\StructureSelector.dll",
 				ClassName = "StructureSelector.Command",
 				ToolTip = "Steel structure selector help the user to select a group of structure components",
-				LongDescription = "Steel structure selector provides a form where steel structure components are grouped by type and by clicking a button, triggers" +
-				                  "revit to select all the components related to the group name",
-				Image = File.Exists(GetImagePath("structureSelector16x16.png")) ? new BitmapImage(new Uri(GetImagePath("structureSelector16x16.png"))) : null,
-				LargeImage = File.Exists(GetLargeImagePath("structureSelector32x32.png")) ? new BitmapImage(new Uri(GetLargeImagePath("structureSelector32x32.png"))) : null
+				LongDescription = "",
+				Image = LoadImage("structureSelector16x16.png"),
+				LargeImage = LoadLargeImage("structureSelector32x32.png")
 			};
 			PushButtonData structureSelectorData = CreateButtonData(structureSelectorAttr);
 
@@ -40,12 +43,12 @@ namespace RevitPanel
 			{
 				Name = "ODM Brackets",
 				Title = "ODM Brackets",
-				AssemblyPath = @"J:\Drawings REVIT FAMILIES\02 NEW\Aris\Addins\PetersimeV2\DLLs\SuspensionMarkers.dll",
+				AssemblyPath = $@"{dllFolder}\SuspensionMarkers.dll",
 				ClassName = "SuspensionMarkers.ODMbrackets",
 				ToolTip = "Place all the suspension markers for ODM brackets + distance to roof",
 				LongDescription = "",
-				Image = File.Exists(GetImagePath("odmBrackets16x16.png")) ? new BitmapImage(new Uri(GetImagePath("odmBrackets16x16.png"))) : null,
-				LargeImage = File.Exists(GetLargeImagePath("odmBrackets32x32.png")) ? new BitmapImage(new Uri(GetLargeImagePath("odmBrackets32x32.png"))) : null
+				Image = LoadImage("odmBrackets16x16.png"),
+				LargeImage = LoadLargeImage("odmBrackets32x32.png")
 			};
 			PushButtonData odmBracketsData = CreateButtonData(odmBracketsAttr);
 
@@ -54,12 +57,12 @@ namespace RevitPanel
 			{
 				Name = "R7 Rails",
 				Title = "R7 Rails",
-				AssemblyPath = @"J:\Drawings REVIT FAMILIES\02 NEW\Aris\Addins\PetersimeV2\DLLs\SuspensionMarkers.dll",
+				AssemblyPath = $@"{dllFolder}\SuspensionMarkers.dll",
 				ClassName = "SuspensionMarkers.R7Rails",
 				ToolTip = "Place all the suspension markers for R7 rails under rectangular ducts + distance to roof",
 				LongDescription = "",
-				Image = File.Exists(GetImagePath("r7Rails16x16.png")) ? new BitmapImage(new Uri(GetImagePath("r7Rails16x16.png"))) : null,
-				LargeImage = File.Exists(GetLargeImagePath("r7Rails32x32.png")) ? new BitmapImage(new Uri(GetLargeImagePath("r7Rails32x32.png"))) : null
+				Image = LoadImage("r7Rails16x16.png"),
+				LargeImage = LoadLargeImage("r7Rails32x32.png")
 			};
 			PushButtonData r7RailsData = CreateButtonData(r7RailsAttr);
 
@@ -68,12 +71,12 @@ namespace RevitPanel
 			{
 				Name = "Duct through ceiling",
 				Title = "Duct through ceiling",
-				AssemblyPath = @"J:\Drawings REVIT FAMILIES\02 NEW\Aris\Addins\PetersimeV2\DLLs\SuspensionMarkers.dll",
+				AssemblyPath = $@"{dllFolder}\SuspensionMarkers.dll",
 				ClassName = "SuspensionMarkers.DuctTroughCeiling",
 				ToolTip = "Place all the suspension markers for R7 rails under rectangular ducts + distance to roof",
 				LongDescription = "",
-				Image = File.Exists(GetImagePath("ductThroughCeiling16x16.png")) ? new BitmapImage(new Uri(GetImagePath("ductThroughCeiling16x16.png"))) : null,
-				LargeImage = File.Exists(GetLargeImagePath("ductThroughCeiling32x32.png")) ? new BitmapImage(new Uri(GetLargeImagePath("ductThroughCeiling32x32.png"))) : null
+				Image = LoadImage("ductThroughCeiling16x16.png"),
+				LargeImage = LoadLargeImage("ductThroughCeiling32x32.png")
 			};
 			PushButtonData ductThroughCeilingData = CreateButtonData(ductThroughCeilingAttr);
 
@@ -82,12 +85,12 @@ namespace RevitPanel
 			{
 				Name = "Duct through wall",
 				Title = "Duct through wall",
-				AssemblyPath = @"J:\Drawings REVIT FAMILIES\02 NEW\Aris\Addins\PetersimeV2\DLLs\SuspensionMarkers.dll",
+				AssemblyPath = $@"{dllFolder}\SuspensionMarkers.dll",
 				ClassName = "SuspensionMarkers.DuctTroughWall",
 				ToolTip = "Place all the suspension markers for ducts through walls",
 				LongDescription = "",
-				Image = File.Exists(GetImagePath("ductThroughWall16x16.png")) ? new BitmapImage(new Uri(GetImagePath("ductThroughWall16x16.png"))) : null,
-				LargeImage = File.Exists(GetLargeImagePath("ductThroughWall32x32.png")) ? new BitmapImage(new Uri(GetLargeImagePath("ductThroughWall32x32.png"))) : null
+				Image = LoadImage("ductThroughWall16x16.png"),
+				LargeImage = LoadLargeImage("ductThroughWall32x32.png")
 			};
 			PushButtonData ductThroughWallData = CreateButtonData(ductThroughWallAttr);
 
@@ -96,12 +99,12 @@ namespace RevitPanel
 			{
 				Name = "Ventilator on duct",
 				Title = "Ventilator on duct",
-				AssemblyPath = @"J:\Drawings REVIT FAMILIES\02 NEW\Aris\Addins\PetersimeV2\DLLs\SuspensionMarkers.dll",
+				AssemblyPath = $@"{dllFolder}\SuspensionMarkers.dll",
 				ClassName = "SuspensionMarkers.VentilatorOnDuct",
 				ToolTip = "Place all the suspension markers for ventilators on ducts",
 				LongDescription = "",
-				Image = File.Exists(GetImagePath("ventilatorOnDuct16x16.png")) ? new BitmapImage(new Uri(GetImagePath("ventilatorOnDuct16x16.png"))) : null,
-				LargeImage = File.Exists(GetLargeImagePath("ventilatorOnDuct32x32.png")) ? new BitmapImage(new Uri(GetLargeImagePath("ventilatorOnDuct32x32.png"))) : null
+				Image = LoadImage("ventilatorOnDuct16x16.png"),
+				LargeImage = LoadLargeImage("ventilatorOnDuct32x32.png")
 			};
 			PushButtonData ventilatorOnDuctData = CreateButtonData(ventilatorOnDuctAttr);
 
@@ -110,12 +113,12 @@ namespace RevitPanel
 			{
 				Name = "Quantities",
 				Title = "Quantities",
-				AssemblyPath = @"J:\Drawings REVIT FAMILIES\02 NEW\Aris\Addins\PetersimeV2\DLLs\SuspensionMarkers.dll",
+				AssemblyPath = $@"{dllFolder}\SuspensionMarkers.dll",
 				ClassName = "SuspensionMarkers.Quantities",
 				ToolTip = "Fill in total quantities",
 				LongDescription = "",
-				Image = File.Exists(GetImagePath("quantities16x16.png")) ? new BitmapImage(new Uri(GetImagePath("quantities16x16.png"))) : null,
-				LargeImage = File.Exists(GetLargeImagePath("quantities32x32.png")) ? new BitmapImage(new Uri(GetLargeImagePath("quantities32x32.png"))) : null
+				Image = LoadImage("quantities16x16.png"),
+				LargeImage = LoadLargeImage("quantities32x32.png")
 			};
 			PushButtonData quantitiesData = CreateButtonData(quantitiesAttr);
 			#endregion
@@ -347,6 +350,18 @@ namespace RevitPanel
 			string largeImagePath = Path.Combine(assemblyDirectory, "LargeImages", largeImageName);
 
 			return largeImagePath;
+		}
+
+		private BitmapImage LoadImage(string imageName)
+		{
+			BitmapImage Image = File.Exists(GetImagePath(imageName)) ? new BitmapImage(new Uri(GetImagePath(imageName))) : null;
+			return Image;
+		}
+
+		private BitmapImage LoadLargeImage(string largeImageName)
+		{
+			BitmapImage LargeImage = File.Exists(GetLargeImagePath(largeImageName)) ? new BitmapImage(new Uri(GetLargeImagePath(largeImageName))) : null;
+			return LargeImage;
 		}
 		#endregion
 	}
