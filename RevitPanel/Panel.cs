@@ -24,6 +24,8 @@ namespace RevitPanel
 			#endregion
 
 			#region Add-ins
+
+			#region Tools
 			//Add-in Structure Selector
 			AddinAttr structureSelectorAttr = new AddinAttr()
 			{
@@ -37,7 +39,11 @@ namespace RevitPanel
 				LargeImage = LoadLargeImage("structureSelector32x32.png")
 			};
 			PushButtonData structureSelectorData = CreateButtonData(structureSelectorAttr);
+			#endregion
 
+			#region Mechanical
+
+			#region Suspension
 			//Add-in ODM Brackets
 			AddinAttr odmBracketsAttr = new AddinAttr()
 			{
@@ -123,6 +129,132 @@ namespace RevitPanel
 			PushButtonData quantitiesData = CreateButtonData(quantitiesAttr);
 			#endregion
 
+			#region Duct split
+			//Add-in Duct split
+			AddinAttr ductSplitAttr = new AddinAttr()
+			{
+				Name = "Duct split",
+				Title = "Duct split",
+				AssemblyPath = $@"{dllFolder}\SuspensionMarkers.dll",
+				ClassName = "SuspensionMarkers.DuctSplit",
+				ToolTip = "Splits round and rectangular ducts",
+				LongDescription = "",
+				Image = LoadImage("ductSplit16x16.png"),
+				LargeImage = LoadLargeImage("ductSplit32x32.png")
+			};
+			PushButtonData ductSplitData = CreateButtonData(ductSplitAttr);
+
+			//Add-in RT Duct split 2xF
+			AddinAttr rtDuctSplitAttr = new AddinAttr()
+			{
+				Name = "RT Duct split 2xF",
+				Title = "RT Duct split 2xF",
+				AssemblyPath = $@"{dllFolder}\SuspensionMarkers.dll",
+				ClassName = "SuspensionMarkers.RTDuctSplit2F",
+				ToolTip = "Splits rectangular ducts with first & last duct + F",
+				LongDescription = "",
+				Image = LoadImage("rtDuctSplit16x16.png"),
+				LargeImage = LoadLargeImage("rtDuctSplit32x32.png")
+			};
+			PushButtonData rtDuctSplitData = CreateButtonData(rtDuctSplitAttr);
+			#endregion
+
+			#region Exhausts
+			//Add-in Exhaust run
+			AddinAttr exhaustRunAttr = new AddinAttr()
+			{
+				Name = "Exhaust run",
+				Title = "Exhaust run",
+				AssemblyPath = $@"{dllFolder}\HVAC.dll",
+				ClassName = "HVAC.ExhaustTower",
+				ToolTip = "Create a vertical duct through a roof with OKA, roof hood and 3 inspection doors",
+				LongDescription = "",
+				Image = LoadImage("exhaustRun16x16.png"),
+				LargeImage = LoadLargeImage("exhaustRun32x32.png")
+			};
+			PushButtonData exhaustRunData = CreateButtonData(exhaustRunAttr);
+
+			//Add-in Exhaust offset
+			AddinAttr exhaustOffsetAttr = new AddinAttr()
+			{
+				Name = "Exhaust offset",
+				Title = "Exhaust offset",
+				AssemblyPath = $@"{dllFolder}\HVAC.dll",
+				ClassName = "HVAC.ExhaustOffset",
+				ToolTip = "Parallel displacement of a duct by inserting 2 elbows",
+				LongDescription = "",
+				Image = LoadImage("exhaustOffset16x16.png"),
+				LargeImage = LoadLargeImage("exhaustOffset32x32.png")
+			};
+			PushButtonData exhaustOffsetData = CreateButtonData(exhaustOffsetAttr);
+			#endregion
+
+			#region AHU
+			//Add-in AHU editor
+			AddinAttr ahuEditorAttr = new AddinAttr()
+			{
+				Name = "AHU editor",
+				Title = "AHU editor",
+				AssemblyPath = $@"{dllFolder}\HVAC.dll",
+				ClassName = "HVAC.AHUComponents",
+				ToolTip = "AHU Editor",
+				LongDescription = "",
+				Image = LoadImage("ahuEditor16x16.png"),
+				LargeImage = LoadLargeImage("ahuEditor32x32.png")
+			};
+			PushButtonData ahuEditorData = CreateButtonData(ahuEditorAttr);
+
+			//Add-in Create 3D view
+			AddinAttr create3DViewAttr = new AddinAttr()
+			{
+				Name = "Create 3D view",
+				Title = "Create 3D view",
+				AssemblyPath = $@"{dllFolder}\HVAC.dll",
+				ClassName = "HVAC.create3Dview",
+				ToolTip = "Create isometric view of an instance",
+				LongDescription = "",
+				Image = LoadImage("create3DView16x16.png"),
+				LargeImage = LoadLargeImage("create3DView32x32.png")
+			};
+			PushButtonData create3DViewData = CreateButtonData(create3DViewAttr);
+			#endregion
+
+			#region Accesorries
+			//Add-in Insert CVD and VAV
+			AddinAttr insertCvdVavAttr = new AddinAttr()
+			{
+				Name = "Insert CVD and VAV",
+				Title = "Insert CVD and VAV",
+				AssemblyPath = $@"{dllFolder}\HVAC.dll",
+				ClassName = "HVAC.InsertConstantVolumeDamper",
+				ToolTip = "Insert CDV and VAV with VF connectors",
+				LongDescription = "",
+				Image = LoadImage("insertCvdVav16x16.png"),
+				LargeImage = LoadLargeImage("insertCvdVav32x32.png")
+			};
+			PushButtonData insertCvdVavData = CreateButtonData(insertCvdVavAttr);
+			#endregion
+
+			#endregion
+
+			#region Electrical
+
+			#endregion
+
+			#region Plumbing
+
+			#endregion
+
+			#region Plan
+
+			#endregion
+
+			#region Data
+			
+			#endregion
+
+			#endregion
+
 			#region UI Elements
 			//Ribbon panel
 			application.CreateRibbonTab("Petersime");
@@ -134,9 +266,12 @@ namespace RevitPanel
 			RibbonPanel planPanel = application.CreateRibbonPanel("Petersime", "Plan");
 
 			//Push buttons
+			#region Tools
 			CreateRibbonPushButton(toolsPanel, structureSelectorData);
-			
+			#endregion
+
 			//Pulldown buttons
+			#region Mechanical
 			//Suspension
 			PulldownButtonAttr suspensionPulldownButtonAttr = new PulldownButtonAttr()
 			{
@@ -161,7 +296,7 @@ namespace RevitPanel
 				LargeImage = File.Exists(GetLargeImagePath("ductSplit32x32.png")) ? new BitmapImage(new Uri(GetLargeImagePath("ductSplit32x32.png"))) : null
 			};
 			PulldownButtonData ductSplitPulldownButtonData = CreatePulldownButtonData(ductSplitPulldownButtonAttr);
-			CreateRibbonPulldownButtons(mechanicalPanel, ductSplitPulldownButtonData, new List<PushButtonData>() { });
+			CreateRibbonPulldownButtons(mechanicalPanel, ductSplitPulldownButtonData, new List<PushButtonData>() { ductSplitData, rtDuctSplitData });
 
 			//Exhausts
 			PulldownButtonAttr exhaustsPulldownButtonAttr = new PulldownButtonAttr()
@@ -174,7 +309,7 @@ namespace RevitPanel
 				LargeImage = File.Exists(GetLargeImagePath("exhausts32x32.png")) ? new BitmapImage(new Uri(GetLargeImagePath("exhausts32x32.png"))) : null
 			};
 			PulldownButtonData exhaustsPulldownButtonData = CreatePulldownButtonData(exhaustsPulldownButtonAttr);
-			CreateRibbonPulldownButtons(mechanicalPanel, exhaustsPulldownButtonData, new List<PushButtonData>() { });
+			CreateRibbonPulldownButtons(mechanicalPanel, exhaustsPulldownButtonData, new List<PushButtonData>() { exhaustRunData, exhaustOffsetData });
 
 			//AHU
 			PulldownButtonAttr ahuPulldownButtonAttr = new PulldownButtonAttr()
@@ -187,7 +322,7 @@ namespace RevitPanel
 				LargeImage = File.Exists(GetLargeImagePath("ahu32x32.png")) ? new BitmapImage(new Uri(GetLargeImagePath("ahu32x32.png"))) : null
 			};
 			PulldownButtonData ahuPulldownButtonData = CreatePulldownButtonData(ahuPulldownButtonAttr);
-			CreateRibbonPulldownButtons(mechanicalPanel, ahuPulldownButtonData, new List<PushButtonData>() { });
+			CreateRibbonPulldownButtons(mechanicalPanel, ahuPulldownButtonData, new List<PushButtonData>() { ahuEditorData, create3DViewData });
 
 			//Accessories
 			PulldownButtonAttr accessoriesPulldownButtonAttr = new PulldownButtonAttr()
@@ -200,7 +335,9 @@ namespace RevitPanel
 				LargeImage = File.Exists(GetLargeImagePath("ahu32x32.png")) ? new BitmapImage(new Uri(GetLargeImagePath("ahu32x32.png"))) : null
 			};
 			PulldownButtonData accessoriesPulldownButtonData = CreatePulldownButtonData(accessoriesPulldownButtonAttr);
-			CreateRibbonPulldownButtons(mechanicalPanel, accessoriesPulldownButtonData, new List<PushButtonData>() { });
+			CreateRibbonPulldownButtons(mechanicalPanel, accessoriesPulldownButtonData, new List<PushButtonData>() { insertCvdVavData });
+			#endregion
+
 			#endregion
 
 			return Result.Succeeded;
