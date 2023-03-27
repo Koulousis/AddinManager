@@ -24,23 +24,7 @@ namespace RevitPanel
 			#endregion
 
 			#region Add-ins
-
-			#region Tools
-			//Add-in Structure Selector
-			AddinAttr structureSelectorAttr = new AddinAttr()
-			{
-				Name = "Structure Selector",
-				Title = "Structure Selector",
-				AssemblyPath = $@"{dllFolder}\StructureSelector.dll",
-				ClassName = "StructureSelector.Command",
-				ToolTip = "Steel structure selector help the user to select a group of structure components",
-				LongDescription = "",
-				Image = LoadImage("structureSelector16x16.png"),
-				LargeImage = LoadLargeImage("structureSelector32x32.png")
-			};
-			PushButtonData structureSelectorData = CreateButtonData(structureSelectorAttr);
-			#endregion
-
+			
 			#region Mechanical
 
 			#region Suspension
@@ -239,18 +223,346 @@ namespace RevitPanel
 
 			#region Electrical
 
+			#region Cables
+			//Add-in Cable lengths
+			AddinAttr cableLengthsAttr = new AddinAttr()
+			{
+				Name = "Cable lengths",
+				Title = "Cable lengths",
+				AssemblyPath = $@"{dllFolder}\PETAddin.dll",
+				ClassName = "PETAddin.CableLength",
+				ToolTip = "Calculate distances of Cable Markers to ESB's",
+				LongDescription = "",
+				Image = LoadImage("cableLengths16x16.png"),
+				LargeImage = LoadLargeImage("cableLengths32x32.png")
+			};
+			PushButtonData cableLengthsData = CreateButtonData(cableLengthsAttr);
+
+			//Add-in Remove conduit lines
+			AddinAttr removeConduitLinesAttr = new AddinAttr()
+			{
+				Name = "Remove conduit lines",
+				Title = "Remove conduit lines",
+				AssemblyPath = $@"{dllFolder}\PETAddin.dll",
+				ClassName = "PETAddin.removeConduitLines",
+				ToolTip = "Remove all the conduit lines",
+				LongDescription = "",
+				Image = LoadImage("removeConduitLines16x16.png"),
+				LargeImage = LoadLargeImage("removeConduitLines32x32.png")
+			};
+			PushButtonData removeConduitLinesData = CreateButtonData(removeConduitLinesAttr);
+
+			//Add-in Calculate line lengths
+			AddinAttr calculateLineLengthsAttr = new AddinAttr()
+			{
+				Name = "Calculate line lengths",
+				Title = "Calculate line lengths",
+				AssemblyPath = $@"{dllFolder}\PETAddin.dll",
+				ClassName = "PETAddin.calculateLineLengths",
+				ToolTip = "Calculate total lengths of lines per line type",
+				LongDescription = "",
+				Image = LoadImage("calculateLineLengths16x16.png"),
+				LargeImage = LoadLargeImage("calculateLineLengths32x32.png")
+			};
+			PushButtonData calculateLineLengthsData = CreateButtonData(calculateLineLengthsAttr);
+
+			//Add-in A cable info
+			AddinAttr aCableInfoAttr = new AddinAttr()
+			{
+				Name = "A cable info",
+				Title = "A cable info",
+				AssemblyPath = $@"{dllFolder}\PETAddin.dll",
+				ClassName = "PETAddin.ACableInfo",
+				ToolTip = "Show data of A cables",
+				LongDescription = "",
+				Image = LoadImage("aCableInfo16x16.png"),
+				LargeImage = LoadLargeImage("aCableInfo32x32.png")
+			};
+			PushButtonData aCableInfoData = CreateButtonData(aCableInfoAttr);
+			#endregion
+
+			#region Markers
+			//Add-in Associate cable marker
+			AddinAttr associateCableMarkerAttr = new AddinAttr()
+			{
+				Name = "Associate cable marker",
+				Title = "Associate cable marker",
+				AssemblyPath = $@"{dllFolder}\PETAddin.dll",
+				ClassName = "PETAddin.AssociateCableMarker",
+				ToolTip = "Associate cable marker parameters with family parameters",
+				LongDescription = "",
+				Image = LoadImage("associateCableMarker16x16.png"),
+				LargeImage = LoadLargeImage("associateCableMarker32x32.png")
+			};
+			PushButtonData associateCableMarkerData = CreateButtonData(associateCableMarkerAttr);
+
+			//Add-in Create cable markers
+			AddinAttr createCableMarkersAttr = new AddinAttr()
+			{
+				Name = "Create cable markers",
+				Title = "Create cable markers",
+				AssemblyPath = $@"{dllFolder}\PETAddin.dll",
+				ClassName = "PETAddin.AssociateCableMarker",
+				ToolTip = "Create and associate cable markers",
+				LongDescription = "",
+				Image = LoadImage("createCableMarkers16x16.png"),
+				LargeImage = LoadLargeImage("createCableMarkers32x32.png")
+			};
+			PushButtonData createCableMarkersData = CreateButtonData(createCableMarkersAttr);
+			#endregion
+
 			#endregion
 
 			#region Plumbing
+
+			#region Pipe edits
+			//Add-in Replace reduction
+			AddinAttr replaceReductionAttr = new AddinAttr()
+			{
+				Name = "Replace reduction",
+				Title = "Replace reduction",
+				AssemblyPath = $@"{dllFolder}\HVAC.dll",
+				ClassName = "HVAC.Piping.ReplaceReduction",
+				ToolTip = "Replace an invalid pipe reduction by a series of valid reductions",
+				LongDescription = "",
+				Image = LoadImage("replaceReduction16x16.png"),
+				LargeImage = LoadLargeImage("replaceReduction32x32.png")
+			};
+			PushButtonData replaceReductionData = CreateButtonData(replaceReductionAttr);
+
+			//Add-in Weld saddle diameters
+			AddinAttr weldSaddleDiametersAttr = new AddinAttr()
+			{
+				Name = "Weld saddle diameters",
+				Title = "Weld saddle diameters",
+				AssemblyPath = $@"{dllFolder}\PETAddin.dll",
+				ClassName = "PETAddin.WeldSaddleDiameters",
+				ToolTip = "Fill in the diameter of the main pipe of all PP-RCT weld saddles",
+				LongDescription = "",
+				Image = LoadImage("weldSaddleDiameters16x16.png"),
+				LargeImage = LoadLargeImage("weldSaddleDiameters32x32.png")
+			};
+			PushButtonData weldSaddleDiametersData = CreateButtonData(weldSaddleDiametersAttr);
+			#endregion
+
+			#region Pipe splits
+			//Add-in PP-RCT split
+			AddinAttr pprctSplitAttr = new AddinAttr()
+			{
+				Name = "PP-RCT split",
+				Title = "PP-RCT split",
+				AssemblyPath = $@"{dllFolder}\SuspensionMarkers.dll",
+				ClassName = "SuspensionMarkers.PP_RCTSplit",
+				ToolTip = "Click on PP-RCT pipes to split in 3 meter. Does not reconnect taps",
+				LongDescription = "",
+				Image = LoadImage("pprctSplit16x16.png"),
+				LargeImage = LoadLargeImage("pprctSplit32x32.png")
+			};
+			PushButtonData pprctSplitData = CreateButtonData(pprctSplitAttr);
+
+			//Add-in PP-RCT split all
+			AddinAttr pprctSplitAllAttr = new AddinAttr()
+			{
+				Name = "PP-RCT split all",
+				Title = "PP-RCT split all",
+				AssemblyPath = $@"{dllFolder}\SuspensionMarkers.dll",
+				ClassName = "SuspensionMarkers.PP_RCTSplitAll",
+				ToolTip = "Split all PP-RCT pipes",
+				LongDescription = "",
+				Image = LoadImage("pprctSplitAll16x16.png"),
+				LargeImage = LoadLargeImage("pprctSplitAll32x32.png")
+			};
+			PushButtonData pprctSplitAllData = CreateButtonData(pprctSplitAllAttr);
+			#endregion
+
+			#region Connections
+			//Add-in Flex pipe connection
+			AddinAttr flexPipeConnectionAttr = new AddinAttr()
+			{
+				Name = "Flex pipe connection",
+				Title = "Flex pipe connection",
+				AssemblyPath = $@"{dllFolder}\HVAC.dll",
+				ClassName = "HVAC.Piping.FlexPipeConnection",
+				ToolTip = "Create a flex pipe connection between 2 pipes",
+				LongDescription = "",
+				Image = LoadImage("flexPipeConnection16x16.png"),
+				LargeImage = LoadLargeImage("flexPipeConnection32x32.png")
+			};
+			PushButtonData flexPipeConnectionData = CreateButtonData(flexPipeConnectionAttr);
+
+			//Add-in Connect tap high pressure cleaning
+			AddinAttr connectTapHpcAttr = new AddinAttr()
+			{
+				Name = "Connect tap high pressure cleaning",
+				Title = "Connect tap high pressure cleaning",
+				AssemblyPath = $@"{dllFolder}\HVAC.dll",
+				ClassName = "HVAC.Piping.ConnectTapHPC",
+				ToolTip = "Connect a high pressure cleaning tap to a pipe",
+				LongDescription = "",
+				Image = LoadImage("connectTapHpc16x16.png"),
+				LargeImage = LoadLargeImage("connectTapHpc32x32.png")
+			};
+			PushButtonData connectTapHpcData = CreateButtonData(connectTapHpcAttr);
+			#endregion
+
+			#region Incubators piping
+			//Add-in 2D symbols for XSTR
+			AddinAttr piping2dDetailAttr = new AddinAttr()
+			{
+				Name = "2D symbols for XSTR",
+				Title = "2D symbols for XSTR",
+				AssemblyPath = $@"{dllFolder}\Piping2DDetail.dll",
+				ClassName = "Piping2D.Piping2DDetailCommand",
+				ToolTip = "Change 2D scheme for compressed air | cooling water | humidifying",
+				LongDescription = "",
+				Image = LoadImage("piping2dDetail16x16.png"),
+				LargeImage = LoadLargeImage("piping2dDetail32x32.png")
+			};
+			PushButtonData piping2dDetailData = CreateButtonData(piping2dDetailAttr);
+			#endregion
+
+			#endregion
+
+			#region Data
+
+			#region Data to compare
+			//Add-in Data grid
+			AddinAttr dataGridAttr = new AddinAttr()
+			{
+				Name = "Data grid",
+				Title = "Data grid",
+				AssemblyPath = $@"{dllFolder}\DataGrid.dll",
+				ClassName = "DataGrid.parameterDatagrid",
+				ToolTip = "Data grid for family parameters",
+				LongDescription = "",
+				Image = LoadImage("dataGrid16x16.png"),
+				LargeImage = LoadLargeImage("dataGrid32x32.png")
+			};
+			PushButtonData dataGridData = CreateButtonData(dataGridAttr);
+
+			//Add-in Cable data
+			AddinAttr cableDataAttr = new AddinAttr()
+			{
+				Name = "Cable data",
+				Title = "Cable data",
+				AssemblyPath = $@"{dllFolder}\PETAddin.dll",
+				ClassName = "PETAddin.CheckCableData",
+				ToolTip = "Compare cable marker data with excel regulation file",
+				LongDescription = "",
+				Image = LoadImage("cableData16x16.png"),
+				LargeImage = LoadLargeImage("cableData32x32.png")
+			};
+			PushButtonData cableDataData = CreateButtonData(cableDataAttr);
+			#endregion
+
+			#region Export data
+			//Add-in Dwfx | Dwg | Pdf
+			AddinAttr DwfxDwgPdfAttr = new AddinAttr()
+			{
+				Name = "Dwfx | Dwg | Pdf",
+				Title = "Dwfx | Dwg | Pdf",
+				AssemblyPath = $@"{dllFolder}\SheetExport.dll",
+				ClassName = "SheetExport.SheetExport",
+				ToolTip = "Exports files,data and sheets from Revit",
+				LongDescription = "",
+				Image = LoadImage("DwfxDwgPdf16x16.png"),
+				LargeImage = LoadLargeImage("DwfxDwgPdf32x32.png")
+			};
+			PushButtonData DwfxDwgPdfData = CreateButtonData(DwfxDwgPdfAttr);
+
+			//Add-in Bumper lengths
+			AddinAttr bumperLengthsAttr = new AddinAttr()
+			{
+				Name = "Bumper lengths",
+				Title = "Bumper lengths",
+				AssemblyPath = $@"{dllFolder}\PETAddin.dll",
+				ClassName = "PETAddin.calculateBumperLengths",
+				ToolTip = "Calculate the bumper lengths based on filled regions",
+				LongDescription = "",
+				Image = LoadImage("bumperLengths16x16.png"),
+				LargeImage = LoadLargeImage("bumperLengths32x32.png")
+			};
+			PushButtonData bumperLengthsData = CreateButtonData(bumperLengthsAttr);
+
+			//Add-in Translations
+			AddinAttr translationsAttr = new AddinAttr()
+			{
+				Name = "Translations",
+				Title = "Translations",
+				AssemblyPath = $@"{dllFolder}\Translations.dll",
+				ClassName = "Translations.Translate",
+				ToolTip = "Add translations for cable Position, cable description, room name",
+				LongDescription = "",
+				Image = LoadImage("translations16x16.png"),
+				LargeImage = LoadLargeImage("translations32x32.png")
+			};
+			PushButtonData translationsData = CreateButtonData(translationsAttr);
+			#endregion
+
+			#region Data to check
+			//Add-in Checking tools
+			AddinAttr checkingToolsAttr = new AddinAttr()
+			{
+				Name = "Checking tools",
+				Title = "Checking tools",
+				AssemblyPath = $@"{dllFolder}\PETAddin.dll",
+				ClassName = "PETAddin.Tools",
+				ToolTip = "Opens a window with the available checking tools",
+				LongDescription = "",
+				Image = LoadImage("checkingTools16x16.png"),
+				LargeImage = LoadLargeImage("checkingTools32x32.png")
+			};
+			PushButtonData checkingToolsData = CreateButtonData(checkingToolsAttr);
+			#endregion
 
 			#endregion
 
 			#region Plan
 
+			#region Revit shortcuts
+			//Add-in Center room tags
+			AddinAttr centerRoomsTagsAttr = new AddinAttr()
+			{
+				Name = "Center room tags",
+				Title = "Center room tags",
+				AssemblyPath = $@"{dllFolder}\HVAC.dll",
+				ClassName = "HVAC.Rooms.CenterAllRoomTags",
+				ToolTip = "Center all the room tags in the active view",
+				LongDescription = "",
+				Image = LoadImage("centerRoomsTags16x16.png"),
+				LargeImage = LoadLargeImage("centerRoomsTags32x32.png")
+			};
+			PushButtonData centerRoomsTagsData = CreateButtonData(centerRoomsTagsAttr);
+
+			//Add-in Structure Selector
+			AddinAttr structureSelectorAttr = new AddinAttr()
+			{
+				Name = "Structure Selector",
+				Title = "Structure Selector",
+				AssemblyPath = $@"{dllFolder}\StructureSelector.dll",
+				ClassName = "StructureSelector.Command",
+				ToolTip = "Steel structure selector help the user to select a group of structure components",
+				LongDescription = "",
+				Image = LoadImage("structureSelector16x16.png"),
+				LargeImage = LoadLargeImage("structureSelector32x32.png")
+			};
+			PushButtonData structureSelectorData = CreateButtonData(structureSelectorAttr);
+
+			//Add-in Renumber duct system
+			AddinAttr renumberDuctSystemAttr = new AddinAttr()
+			{
+				Name = "Renumber duct system",
+				Title = "Renumber duct system",
+				AssemblyPath = $@"{dllFolder}\RenumberElements 2016.dll",
+				ClassName = "RenumberElements",
+				ToolTip = "Add alphabetic and arithmetic order to a duct system for 3D views",
+				LongDescription = "",
+				Image = LoadImage("renumberDuctSystem16x16.png"),
+				LargeImage = LoadLargeImage("renumberDuctSystem32x32.png")
+			};
+			PushButtonData renumberDuctSystemData = CreateButtonData(renumberDuctSystemAttr);
 			#endregion
 
-			#region Data
-			
 			#endregion
 
 			#endregion
@@ -258,18 +570,12 @@ namespace RevitPanel
 			#region UI Elements
 			//Ribbon panel
 			application.CreateRibbonTab("Petersime");
-			RibbonPanel toolsPanel = application.CreateRibbonPanel("Petersime", "Tools");
 			RibbonPanel mechanicalPanel = application.CreateRibbonPanel("Petersime", "Mechanical");
 			RibbonPanel electricalPanel = application.CreateRibbonPanel("Petersime", "Electrical");
 			RibbonPanel plumbingPanel = application.CreateRibbonPanel("Petersime", "Plumbing");
 			RibbonPanel dataPanel = application.CreateRibbonPanel("Petersime", "Data");
 			RibbonPanel planPanel = application.CreateRibbonPanel("Petersime", "Plan");
-
-			//Push buttons
-			#region Tools
-			CreateRibbonPushButton(toolsPanel, structureSelectorData);
-			#endregion
-
+			
 			//Pulldown buttons
 			#region Mechanical
 			//Suspension
@@ -279,8 +585,8 @@ namespace RevitPanel
 				Title = "Suspension",
 				ToolTip = "Suspension add-ins",
 				LongDescription = "",
-				Image = File.Exists(GetImagePath("suspension16x16.png")) ? new BitmapImage(new Uri(GetImagePath("suspension16x16.png"))) : null,
-				LargeImage = File.Exists(GetLargeImagePath("suspension32x32.png")) ? new BitmapImage(new Uri(GetLargeImagePath("suspension32x32.png"))) : null
+				Image =  LoadImage("suspension16x16.png"),
+				LargeImage = LoadLargeImage("suspension32x32.png")
 			};
 			PulldownButtonData suspensionPulldownButtonData = CreatePulldownButtonData(suspensionPulldownButtonAttr);
 			CreateRibbonPulldownButtons(mechanicalPanel, suspensionPulldownButtonData, new List<PushButtonData>() { odmBracketsData, r7RailsData, ductThroughCeilingData, ductThroughWallData, ventilatorOnDuctData, quantitiesData });
@@ -292,8 +598,8 @@ namespace RevitPanel
 				Title = "Duct split",
 				ToolTip = "Duct split add-ins",
 				LongDescription = "",
-				Image = File.Exists(GetImagePath("ductSplit16x16.png")) ? new BitmapImage(new Uri(GetImagePath("ductSplit16x16.png"))) : null,
-				LargeImage = File.Exists(GetLargeImagePath("ductSplit32x32.png")) ? new BitmapImage(new Uri(GetLargeImagePath("ductSplit32x32.png"))) : null
+				Image = LoadImage("ductSplit16x16.png"),
+				LargeImage = LoadLargeImage("ductSplit32x32.png")
 			};
 			PulldownButtonData ductSplitPulldownButtonData = CreatePulldownButtonData(ductSplitPulldownButtonAttr);
 			CreateRibbonPulldownButtons(mechanicalPanel, ductSplitPulldownButtonData, new List<PushButtonData>() { ductSplitData, rtDuctSplitData });
@@ -305,8 +611,8 @@ namespace RevitPanel
 				Title = "Exhausts",
 				ToolTip = "Exhausts add-ins",
 				LongDescription = "",
-				Image = File.Exists(GetImagePath("exhausts16x16.png")) ? new BitmapImage(new Uri(GetImagePath("exhausts16x16.png"))) : null,
-				LargeImage = File.Exists(GetLargeImagePath("exhausts32x32.png")) ? new BitmapImage(new Uri(GetLargeImagePath("exhausts32x32.png"))) : null
+				Image = LoadImage("exhausts16x16.png"),
+				LargeImage = LoadLargeImage("exhausts32x32.png")
 			};
 			PulldownButtonData exhaustsPulldownButtonData = CreatePulldownButtonData(exhaustsPulldownButtonAttr);
 			CreateRibbonPulldownButtons(mechanicalPanel, exhaustsPulldownButtonData, new List<PushButtonData>() { exhaustRunData, exhaustOffsetData });
@@ -318,8 +624,8 @@ namespace RevitPanel
 				Title = "AHU",
 				ToolTip = "AHU add-ins",
 				LongDescription = "",
-				Image = File.Exists(GetImagePath("ahu16x16.png")) ? new BitmapImage(new Uri(GetImagePath("ahu16x16.png"))) : null,
-				LargeImage = File.Exists(GetLargeImagePath("ahu32x32.png")) ? new BitmapImage(new Uri(GetLargeImagePath("ahu32x32.png"))) : null
+				Image = LoadImage("ahu16x16.png"),
+				LargeImage = LoadLargeImage("ahu32x32.png")
 			};
 			PulldownButtonData ahuPulldownButtonData = CreatePulldownButtonData(ahuPulldownButtonAttr);
 			CreateRibbonPulldownButtons(mechanicalPanel, ahuPulldownButtonData, new List<PushButtonData>() { ahuEditorData, create3DViewData });
@@ -331,11 +637,149 @@ namespace RevitPanel
 				Title = "Accessories",
 				ToolTip = "Accessories add-ins",
 				LongDescription = "",
-				Image = File.Exists(GetImagePath("ahu16x16.png")) ? new BitmapImage(new Uri(GetImagePath("ahu16x16.png"))) : null,
-				LargeImage = File.Exists(GetLargeImagePath("ahu32x32.png")) ? new BitmapImage(new Uri(GetLargeImagePath("ahu32x32.png"))) : null
+				Image = LoadImage("accessories16x16.png"),
+				LargeImage = LoadLargeImage("accessories32x32.png")
 			};
 			PulldownButtonData accessoriesPulldownButtonData = CreatePulldownButtonData(accessoriesPulldownButtonAttr);
 			CreateRibbonPulldownButtons(mechanicalPanel, accessoriesPulldownButtonData, new List<PushButtonData>() { insertCvdVavData });
+			#endregion
+
+			#region Electrical
+			//Cables
+			PulldownButtonAttr cablesPulldownButtonAttr = new PulldownButtonAttr()
+			{
+				Name = "Cables",
+				Title = "Cables",
+				ToolTip = "Cables add-ins",
+				LongDescription = "",
+				Image = LoadImage("cables16x16.png"),
+				LargeImage = LoadLargeImage("cables32x32.png")
+			};
+			PulldownButtonData cablesPulldownButtonData = CreatePulldownButtonData(cablesPulldownButtonAttr);
+			CreateRibbonPulldownButtons(electricalPanel, cablesPulldownButtonData, new List<PushButtonData>() { cableLengthsData, removeConduitLinesData, calculateLineLengthsData, aCableInfoData });
+
+			//Markers
+			PulldownButtonAttr markersPulldownButtonAttr = new PulldownButtonAttr()
+			{
+				Name = "Markers",
+				Title = "Markers",
+				ToolTip = "Markers add-ins",
+				LongDescription = "",
+				Image = LoadImage("markers16x16.png"),
+				LargeImage = LoadLargeImage("markers32x32.png")
+			};
+			PulldownButtonData markersPulldownButtonData = CreatePulldownButtonData(markersPulldownButtonAttr);
+			CreateRibbonPulldownButtons(electricalPanel, markersPulldownButtonData, new List<PushButtonData>() { associateCableMarkerData, createCableMarkersData });
+			#endregion
+
+			#region Plumbing
+			//Pipe edits
+			PulldownButtonAttr pipeEditsPulldownButtonAttr = new PulldownButtonAttr()
+			{
+				Name = "Pipe edits",
+				Title = "Pipe edits",
+				ToolTip = "Pipe edits add-ins",
+				LongDescription = "",
+				Image = LoadImage("pipeEdits16x16.png"),
+				LargeImage = LoadLargeImage("pipeEdits32x32.png")
+			};
+			PulldownButtonData pipeEditsPulldownButtonData = CreatePulldownButtonData(pipeEditsPulldownButtonAttr);
+			CreateRibbonPulldownButtons(plumbingPanel, pipeEditsPulldownButtonData, new List<PushButtonData>() { replaceReductionData, weldSaddleDiametersData });
+
+			//Pipe splits
+			PulldownButtonAttr pipeSplitsPulldownButtonAttr = new PulldownButtonAttr()
+			{
+				Name = "Pipe splits",
+				Title = "Pipe splits",
+				ToolTip = "Pipe splits add-ins",
+				LongDescription = "",
+				Image = LoadImage("pipeSplits16x16.png"),
+				LargeImage = LoadLargeImage("pipeSplits32x32.png")
+			};
+			PulldownButtonData pipeSplitsPulldownButtonData = CreatePulldownButtonData(pipeSplitsPulldownButtonAttr);
+			CreateRibbonPulldownButtons(plumbingPanel, pipeSplitsPulldownButtonData, new List<PushButtonData>() { pprctSplitData, pprctSplitAllData });
+
+			//Connections
+			PulldownButtonAttr connectionsPulldownButtonAttr = new PulldownButtonAttr()
+			{
+				Name = "Connections",
+				Title = "Connections",
+				ToolTip = "Connections add-ins",
+				LongDescription = "",
+				Image = LoadImage("connections16x16.png"),
+				LargeImage = LoadLargeImage("connections32x32.png")
+			};
+			PulldownButtonData connectionsPulldownButtonData = CreatePulldownButtonData(connectionsPulldownButtonAttr);
+			CreateRibbonPulldownButtons(plumbingPanel, connectionsPulldownButtonData, new List<PushButtonData>() { flexPipeConnectionData, connectTapHpcData });
+
+			//Incubators piping
+			PulldownButtonAttr incubatorsPipingPulldownButtonAttr = new PulldownButtonAttr()
+			{
+				Name = "Incubators piping",
+				Title = "Incubators piping",
+				ToolTip = "Incubators piping add-ins",
+				LongDescription = "",
+				Image = LoadImage("incubatorsPiping16x16.png"),
+				LargeImage = LoadLargeImage("incubatorsPiping32x32.png")
+			};
+			PulldownButtonData incubatorsPipingPulldownButtonData = CreatePulldownButtonData(incubatorsPipingPulldownButtonAttr);
+			CreateRibbonPulldownButtons(plumbingPanel, incubatorsPipingPulldownButtonData, new List<PushButtonData>() { piping2dDetailData });
+			#endregion
+
+			#region Data
+			//Data compare
+			PulldownButtonAttr dataComparePulldownButtonAttr = new PulldownButtonAttr()
+			{
+				Name = "Data compare",
+				Title = "Data compare",
+				ToolTip = "Data compare add-ins",
+				LongDescription = "",
+				Image = LoadImage("dataCompare16x16.png"),
+				LargeImage = LoadLargeImage("dataCompare32x32.png")
+			};
+			PulldownButtonData dataComparePulldownButtonData = CreatePulldownButtonData(dataComparePulldownButtonAttr);
+			CreateRibbonPulldownButtons(dataPanel, dataComparePulldownButtonData, new List<PushButtonData>() { dataGridData, cableDataData });
+
+			//Data export
+			PulldownButtonAttr dataExportPulldownButtonAttr = new PulldownButtonAttr()
+			{
+				Name = "Data export",
+				Title = "Data export",
+				ToolTip = "Data export add-ins",
+				LongDescription = "",
+				Image = LoadImage("dataExport16x16.png"),
+				LargeImage = LoadLargeImage("dataExport32x32.png")
+			};
+			PulldownButtonData dataExportPulldownButtonData = CreatePulldownButtonData(dataExportPulldownButtonAttr);
+			CreateRibbonPulldownButtons(dataPanel, dataExportPulldownButtonData, new List<PushButtonData>() { DwfxDwgPdfData, bumperLengthsData, translationsData });
+
+			//Data check
+			PulldownButtonAttr dataCheckPulldownButtonAttr = new PulldownButtonAttr()
+			{
+				Name = "Data check",
+				Title = "Data check",
+				ToolTip = "Data check add-ins",
+				LongDescription = "",
+				Image = LoadImage("dataCheck16x16.png"),
+				LargeImage = LoadLargeImage("dataCheck32x32.png")
+			};
+			PulldownButtonData dataCheckPulldownButtonData = CreatePulldownButtonData(dataCheckPulldownButtonAttr);
+			CreateRibbonPulldownButtons(dataPanel, dataCheckPulldownButtonData, new List<PushButtonData>() { checkingToolsData });
+			#endregion
+
+			#region Plan
+			//Revit shortcuts
+			PulldownButtonAttr revitShortcutsPulldownButtonAttr = new PulldownButtonAttr()
+			{
+				Name = "Revit shortcuts",
+				Title = "Revit shortcuts",
+				ToolTip = "Revit shortcuts add-ins",
+				LongDescription = "",
+				Image = LoadImage("revitShortcuts16x16.png"),
+				LargeImage = LoadLargeImage("revitShortcuts32x32.png")
+			};
+			PulldownButtonData revitShortcutsPulldownButtonData = CreatePulldownButtonData(revitShortcutsPulldownButtonAttr);
+			CreateRibbonPulldownButtons(planPanel, revitShortcutsPulldownButtonData, new List<PushButtonData>() { centerRoomsTagsData, structureSelectorData, renumberDuctSystemData });
 			#endregion
 
 			#endregion
