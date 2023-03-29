@@ -196,7 +196,7 @@ namespace RevitPanel
 				LongDescription = "",
 				Image = LoadImage("ahuEditor16x16.png"),
 				LargeImage = LoadLargeImage("ahuEditor32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\AHU editor.pdf")
 			};
 			PushButtonData ahuEditorData = CreateButtonData(ahuEditorAttr);
 
@@ -249,7 +249,7 @@ namespace RevitPanel
 				LongDescription = "",
 				Image = LoadImage("cableLengths16x16.png"),
 				LargeImage = LoadLargeImage("cableLengths32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Cable lengths.pdf")
 			};
 			PushButtonData cableLengthsData = CreateButtonData(cableLengthsAttr);
 
@@ -411,7 +411,7 @@ namespace RevitPanel
 				LongDescription = "",
 				Image = LoadImage("flexPipeConnection16x16.png"),
 				LargeImage = LoadLargeImage("flexPipeConnection32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Flexible pipe connection.pdf")
 			};
 			PushButtonData flexPipeConnectionData = CreateButtonData(flexPipeConnectionAttr);
 
@@ -479,7 +479,7 @@ namespace RevitPanel
 				LongDescription = "",
 				Image = LoadImage("cableData16x16.png"),
 				LargeImage = LoadLargeImage("cableData32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Cable data.pdf")
 			};
 			PushButtonData cableDataData = CreateButtonData(cableDataAttr);
 			#endregion
@@ -496,7 +496,7 @@ namespace RevitPanel
 				LongDescription = "",
 				Image = LoadImage("DwfxDwgPdf16x16.png"),
 				LargeImage = LoadLargeImage("DwfxDwgPdf32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Dwfx - Dwg - Pdf.pdf")
 			};
 			PushButtonData DwfxDwgPdfData = CreateButtonData(DwfxDwgPdfAttr);
 
@@ -531,7 +531,7 @@ namespace RevitPanel
 			PushButtonData translationsData = CreateButtonData(translationsAttr);
 			#endregion
 
-			#region Data to check
+			#region Data to validate
 			//Add-in Checking tools
 			AddinAttr checkingToolsAttr = new AddinAttr()
 			{
@@ -579,7 +579,7 @@ namespace RevitPanel
 				LongDescription = "",
 				Image = LoadImage("structureSelector16x16.png"),
 				LargeImage = LoadLargeImage("structureSelector32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soons.pdf")
 			};
 			PushButtonData structureSelectorData = CreateButtonData(structureSelectorAttr);
 
@@ -763,7 +763,7 @@ namespace RevitPanel
 			#endregion
 
 			#region Data
-			//Data compare
+			//Data to compare
 			PulldownButtonAttr dataComparePulldownButtonAttr = new PulldownButtonAttr()
 			{
 				Name = "Data compare",
@@ -776,7 +776,7 @@ namespace RevitPanel
 			PulldownButtonData dataComparePulldownButtonData = CreatePulldownButtonData(dataComparePulldownButtonAttr);
 			CreateRibbonPulldownButtons(dataPanel, dataComparePulldownButtonData, new List<PushButtonData>() { dataGridData, cableDataData });
 
-			//Data export
+			//Data to export
 			PulldownButtonAttr dataExportPulldownButtonAttr = new PulldownButtonAttr()
 			{
 				Name = "Data export",
@@ -789,18 +789,18 @@ namespace RevitPanel
 			PulldownButtonData dataExportPulldownButtonData = CreatePulldownButtonData(dataExportPulldownButtonAttr);
 			CreateRibbonPulldownButtons(dataPanel, dataExportPulldownButtonData, new List<PushButtonData>() { DwfxDwgPdfData, bumperLengthsData, translationsData });
 
-			//Data check
-			PulldownButtonAttr dataCheckPulldownButtonAttr = new PulldownButtonAttr()
+			//Data to validate
+			PulldownButtonAttr dataValidationPulldownButtonAttr = new PulldownButtonAttr()
 			{
-				Name = "Data check",
-				Title = "Data check",
-				ToolTip = "Data check add-ins",
+				Name = "Data validation",
+				Title = "Data validation",
+				ToolTip = "Data validation add-ins",
 				LongDescription = "",
-				Image = LoadImage("dataCheck16x16.png"),
-				LargeImage = LoadLargeImage("dataCheck32x32.png")
+				Image = LoadImage("dataValidation16x16.png"),
+				LargeImage = LoadLargeImage("dataValidation32x32.png")
 			};
-			PulldownButtonData dataCheckPulldownButtonData = CreatePulldownButtonData(dataCheckPulldownButtonAttr);
-			CreateRibbonPulldownButtons(dataPanel, dataCheckPulldownButtonData, new List<PushButtonData>() { checkingToolsData });
+			PulldownButtonData dataValidationPulldownButtonData = CreatePulldownButtonData(dataValidationPulldownButtonAttr);
+			CreateRibbonPulldownButtons(dataPanel, dataValidationPulldownButtonData, new List<PushButtonData>() { checkingToolsData });
 			#endregion
 
 			#region Plan
@@ -956,16 +956,16 @@ namespace RevitPanel
 		#region Other methods
 		private string GetImagePath(string imageName)
 		{
-			string assemblyDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-			string imagePath = Path.Combine(assemblyDirectory, "Images", imageName);
+			string assemblyDirectory = @"J:\Drawings REVIT FAMILIES\02 NEW\Aris\Addins\PetersimeV2\RevitAddins\RevitPanel\RevitPanel\Images\";
+			string imagePath = Path.Combine(assemblyDirectory, imageName);
 
 			return imagePath;
 		}
 
 		private string GetLargeImagePath(string largeImageName)
 		{
-			string assemblyDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-			string largeImagePath = Path.Combine(assemblyDirectory, "LargeImages", largeImageName);
+			string assemblyDirectory = @"J:\Drawings REVIT FAMILIES\02 NEW\Aris\Addins\PetersimeV2\RevitAddins\RevitPanel\RevitPanel\LargeImages\";
+			string largeImagePath = Path.Combine(assemblyDirectory, largeImageName);
 
 			return largeImagePath;
 		}
