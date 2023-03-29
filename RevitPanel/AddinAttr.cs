@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using Autodesk.Revit.UI;
 
 namespace RevitPanel
 {
@@ -19,6 +20,7 @@ namespace RevitPanel
 		public string LongDescription { get; set; }
 		public BitmapImage Image { get; set; }
 		public BitmapImage LargeImage { get; set; }
+		public ContextualHelp Help { get; set; }
 
 		/// <remarks>
 		/// Image property: typically 16x16 pixels.

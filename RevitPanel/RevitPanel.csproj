@@ -89,7 +89,7 @@
     <Content Include="LargeImages\dataExport32x32.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="LargeImages\ductSplit32x32.png">
+    <Content Include="LargeImages\ductSplits32x32.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="LargeImages\exhausts32x32.png">
