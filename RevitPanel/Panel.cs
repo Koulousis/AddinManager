@@ -599,6 +599,21 @@ namespace RevitPanel
 			PushButtonData renumberDuctSystemData = CreateButtonData(renumberDuctSystemAttr);
 			#endregion
 
+			//Add-in Weekplanning
+			AddinAttr weekplanningAttr = new AddinAttr()
+			{
+				Name = "Weekplanning",
+				Title = "Weekplanning",
+				AssemblyPath = $@"{dllFolder}\Weekplanning.dll",
+				ClassName = "Weekplanning.Command",
+				ToolTip = "Opens the weekplanning pdf file",
+				LongDescription = "",
+				Image = LoadImage("weekplanning16x16.png"),
+				LargeImage = LoadLargeImage("weekplanning32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+			};
+			PushButtonData weekplanningData = CreateButtonData(weekplanningAttr);
+
 			#endregion
 
 			#endregion
@@ -816,6 +831,8 @@ namespace RevitPanel
 			};
 			PulldownButtonData revitShortcutsPulldownButtonData = CreatePulldownButtonData(revitShortcutsPulldownButtonAttr);
 			CreateRibbonPulldownButtons(planPanel, revitShortcutsPulldownButtonData, new List<PushButtonData>() { centerRoomsTagsData, structureSelectorData, renumberDuctSystemData });
+			
+			CreateRibbonPushButton(planPanel, weekplanningData);
 			#endregion
 
 			#endregion
