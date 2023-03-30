@@ -728,7 +728,7 @@ namespace RevitPanel
 			PulldownButtonAttr pipeEditsPulldownButtonAttr = new PulldownButtonAttr()
 			{
 				Name = "Pipe edits",
-				Title = "Pipe edits",
+				Title = "Pipe\redits",
 				ToolTip = "Pipe edits add-ins",
 				LongDescription = "",
 				Image = LoadImage("pipeEdits16x16.png"),
@@ -741,7 +741,7 @@ namespace RevitPanel
 			PulldownButtonAttr pipeSplitsPulldownButtonAttr = new PulldownButtonAttr()
 			{
 				Name = "Pipe splits",
-				Title = "Pipe splits",
+				Title = "Pipe\rsplits",
 				ToolTip = "Pipe splits add-ins",
 				LongDescription = "",
 				Image = LoadImage("pipeSplits16x16.png"),
@@ -767,7 +767,7 @@ namespace RevitPanel
 			PulldownButtonAttr incubatorsPipingPulldownButtonAttr = new PulldownButtonAttr()
 			{
 				Name = "Incubators piping",
-				Title = "Incubators piping",
+				Title = "Incubators\rpiping",
 				ToolTip = "Incubators piping add-ins",
 				LongDescription = "",
 				Image = LoadImage("incubatorsPiping16x16.png"),
@@ -782,7 +782,7 @@ namespace RevitPanel
 			PulldownButtonAttr dataComparePulldownButtonAttr = new PulldownButtonAttr()
 			{
 				Name = "Data compare",
-				Title = "Data compare",
+				Title = "Data\rcompare",
 				ToolTip = "Data compare add-ins",
 				LongDescription = "",
 				Image = LoadImage("dataCompare16x16.png"),
@@ -795,7 +795,7 @@ namespace RevitPanel
 			PulldownButtonAttr dataExportPulldownButtonAttr = new PulldownButtonAttr()
 			{
 				Name = "Data export",
-				Title = "Data export",
+				Title = "Data\rexport",
 				ToolTip = "Data export add-ins",
 				LongDescription = "",
 				Image = LoadImage("dataExport16x16.png"),
@@ -808,7 +808,7 @@ namespace RevitPanel
 			PulldownButtonAttr dataValidationPulldownButtonAttr = new PulldownButtonAttr()
 			{
 				Name = "Data validation",
-				Title = "Data validation",
+				Title = "Data\rvalidation",
 				ToolTip = "Data validation add-ins",
 				LongDescription = "",
 				Image = LoadImage("dataValidation16x16.png"),
@@ -823,7 +823,7 @@ namespace RevitPanel
 			PulldownButtonAttr revitShortcutsPulldownButtonAttr = new PulldownButtonAttr()
 			{
 				Name = "Revit shortcuts",
-				Title = "Revit shortcuts",
+				Title = "Revit\rshortcuts",
 				ToolTip = "Revit shortcuts add-ins",
 				LongDescription = "",
 				Image = LoadImage("revitShortcuts16x16.png"),
