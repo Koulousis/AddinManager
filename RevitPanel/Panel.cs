@@ -336,12 +336,12 @@ namespace RevitPanel
 				Name = "Create cable markers",
 				Title = "Create cable markers",
 				AssemblyPath = $@"{dllFolder}\PETAddin.dll",
-				ClassName = "PETAddin.AssociateCableMarker",
+				ClassName = "PETAddin.createCableMarkers",
 				ToolTip = "Create and associate cable markers",
 				LongDescription = "",
 				Image = LoadImage("createCableMarkers16x16.png"),
 				LargeImage = LoadLargeImage("createCableMarkers32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Create cable markers.mp4")
 			};
 			PushButtonData createCableMarkersData = CreateButtonData(createCableMarkersAttr);
 			#endregion
