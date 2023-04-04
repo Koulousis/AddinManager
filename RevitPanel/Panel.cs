@@ -34,8 +34,8 @@ namespace RevitPanel
 			{
 				Name = "ODM Brackets",
 				Title = "ODM Brackets",
-				AssemblyPath = $@"{dllFolder}\SuspensionMarkers.dll",
-				ClassName = "SuspensionMarkers.ODMbrackets",
+				AssemblyPath = $@"{dllFolder}\OdmBrackets.dll",
+				ClassName = "OdmBrackets.Command",
 				ToolTip = "Place all the suspension markers for ODM brackets + distance to roof",
 				LongDescription = "",
 				Image = LoadImage("odmBrackets16x16.png"),
@@ -118,6 +118,21 @@ namespace RevitPanel
 				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
 			};
 			PushButtonData quantitiesData = CreateButtonData(quantitiesAttr);
+
+			//Add-in Take off main diameters
+			AddinAttr takeOffMainDiametersAttr = new AddinAttr()
+			{
+				Name = "Take off main diameters",
+				Title = "Take off main diameters",
+				AssemblyPath = $@"{dllFolder}\HVAC.dll",
+				ClassName = "HVAC.DuctTapDiameters",
+				ToolTip = "Fill in the diameter of the main duct of all round curved take offs",
+				LongDescription = "",
+				Image = LoadImage("takeOffMainDiameters16x16.png"),
+				LargeImage = LoadLargeImage("takeOffMainDiameters32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+			};
+			PushButtonData takeOffMainDiametersData = CreateButtonData(takeOffMainDiametersAttr);
 			#endregion
 
 			#region Duct split
@@ -640,13 +655,13 @@ namespace RevitPanel
 				LargeImage = LoadLargeImage("suspension32x32.png")
 			};
 			PulldownButtonData suspensionPulldownButtonData = CreatePulldownButtonData(suspensionPulldownButtonAttr);
-			CreateRibbonPulldownButtons(mechanicalPanel, suspensionPulldownButtonData, new List<PushButtonData>() { odmBracketsData, r7RailsData, ductThroughCeilingData, ductThroughWallData, ventilatorOnDuctData, quantitiesData });
+			CreateRibbonPulldownButtons(mechanicalPanel, suspensionPulldownButtonData, new List<PushButtonData>() { odmBracketsData, r7RailsData, ductThroughCeilingData, ductThroughWallData, ventilatorOnDuctData, quantitiesData, takeOffMainDiametersData });
 
 			//Duct splits
 			PulldownButtonAttr ductSplitPulldownButtonAttr = new PulldownButtonAttr()
 			{
 				Name = "Duct splits",
-				Title = "Duct splits",
+				Title = "Duct\rsplits",
 				ToolTip = "Duct splits add-ins",
 				LongDescription = "",
 				Image = LoadImage("ductSplits16x16.png"),
