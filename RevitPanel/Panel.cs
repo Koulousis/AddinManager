@@ -1,4 +1,5 @@
-﻿using System;
+﻿#region Assemblies
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,6 +13,7 @@ using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Events;
+#endregion
 
 namespace RevitPanel
 {
@@ -34,8 +36,8 @@ namespace RevitPanel
 			{
 				Name = "ODM Brackets",
 				Title = "ODM Brackets",
-				AssemblyPath = $@"{dllFolder}\OdmBrackets.dll",
-				ClassName = "OdmBrackets.Command",
+				AssemblyPath = $@"{dllFolder}\SuspensionMarkers.dll",
+				ClassName = "SuspensionMarkers.ODMbrackets",
 				ToolTip = "Place all the suspension markers for ODM brackets + distance to roof",
 				LongDescription = "",
 				Image = LoadImage("odmBrackets16x16.png"),
@@ -207,7 +209,7 @@ namespace RevitPanel
 				Title = "AHU editor",
 				AssemblyPath = $@"{dllFolder}\HVAC.dll",
 				ClassName = "HVAC.AHUComponents",
-				ToolTip = "AHU Editor",
+				ToolTip = "AHU Editor window",
 				LongDescription = "",
 				Image = LoadImage("ahuEditor16x16.png"),
 				LargeImage = LoadLargeImage("ahuEditor32x32.png"),
@@ -629,6 +631,25 @@ namespace RevitPanel
 			};
 			PushButtonData weekplanningData = CreateButtonData(weekplanningAttr);
 
+			//Add-in Parameter export
+			AddinAttr parameterExportAttr = new AddinAttr()
+			{
+				Name = "Parameter export",
+				Title = "Parameter\rexport",
+				AssemblyPath = $@"{dllFolder}\ParameterExport.dll",
+				ClassName = "ParameterExport.Command",
+				ToolTip = "Export families parameters",
+				LongDescription = "",
+				Image = LoadImage("parameterExport16x16.png"),
+				LargeImage = LoadLargeImage("parameterExport32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+			};
+			PushButtonData parameterExportData = CreateButtonData(parameterExportAttr);
+
+			#endregion
+
+			#region Testing
+			
 			#endregion
 
 			#endregion
@@ -642,7 +663,6 @@ namespace RevitPanel
 			RibbonPanel dataPanel = application.CreateRibbonPanel("Petersime", "Data");
 			RibbonPanel planPanel = application.CreateRibbonPanel("Petersime", "Plan");
 			
-			//Pulldown buttons
 			#region Mechanical
 			//Suspension
 			PulldownButtonAttr suspensionPulldownButtonAttr = new PulldownButtonAttr()
@@ -848,6 +868,12 @@ namespace RevitPanel
 			CreateRibbonPulldownButtons(planPanel, revitShortcutsPulldownButtonData, new List<PushButtonData>() { centerRoomsTagsData, structureSelectorData, renumberDuctSystemData });
 			
 			CreateRibbonPushButton(planPanel, weekplanningData);
+
+			CreateRibbonPushButton(planPanel, parameterExportData);
+			#endregion
+
+			#region Testing
+			
 			#endregion
 
 			#endregion
