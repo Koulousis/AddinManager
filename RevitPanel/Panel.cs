@@ -631,20 +631,20 @@ namespace RevitPanel
 			};
 			PushButtonData weekplanningData = CreateButtonData(weekplanningAttr);
 
-			//Add-in Parameter export
-			AddinAttr parameterExportAttr = new AddinAttr()
+			//Add-in Family parameter read
+			AddinAttr familyParameterReadAttr = new AddinAttr()
 			{
-				Name = "Parameter export",
-				Title = "Parameter\rexport",
-				AssemblyPath = $@"{dllFolder}\ParameterExport.dll",
-				ClassName = "ParameterExport.Command",
+				Name = "Family parameter read",
+				Title = " Family\rParameter\rRead",
+				AssemblyPath = $@"{dllFolder}\FamilyParameterRead.dll",
+				ClassName = "FamilyParameterRead.Command",
 				ToolTip = "Export families parameters",
 				LongDescription = "",
-				Image = LoadImage("parameterExport16x16.png"),
-				LargeImage = LoadLargeImage("parameterExport32x32.png"),
+				Image = LoadImage("familyParameterRead16x16.png"),
+				LargeImage = LoadLargeImage("familyParameterRead32x32.png"),
 				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
 			};
-			PushButtonData parameterExportData = CreateButtonData(parameterExportAttr);
+			PushButtonData familyParameterReadData = CreateButtonData(familyParameterReadAttr);
 
 			#endregion
 
@@ -869,7 +869,7 @@ namespace RevitPanel
 			
 			CreateRibbonPushButton(planPanel, weekplanningData);
 
-			CreateRibbonPushButton(planPanel, parameterExportData);
+			CreateRibbonPushButton(planPanel, familyParameterReadData);
 			#endregion
 
 			#region Testing
