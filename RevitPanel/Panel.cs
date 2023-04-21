@@ -632,19 +632,19 @@ namespace RevitPanel
 			PushButtonData weekplanningData = CreateButtonData(weekplanningAttr);
 
 			//Add-in Family parameter read
-			AddinAttr familyParameterReadAttr = new AddinAttr()
+			AddinAttr familyReadParameterAttr = new AddinAttr()
 			{
-				Name = "Family parameter read",
-				Title = " Family\rParameter\rRead",
-				AssemblyPath = $@"{dllFolder}\FamilyParameterRead.dll",
-				ClassName = "FamilyParameterRead.Command",
-				ToolTip = "Export families parameters",
+				Name = "Family read parameter",
+				Title = " Family Read\rParameter",
+				AssemblyPath = $@"{dllFolder}\FamilyReadParameter.dll",
+				ClassName = "FamilyReadParameter.Command",
+				ToolTip = "Select any amount of families, then select a parameter group and select a family to print it's parameters into a grid view",
 				LongDescription = "",
-				Image = LoadImage("familyParameterRead16x16.png"),
-				LargeImage = LoadLargeImage("familyParameterRead32x32.png"),
+				Image = LoadImage("familyReadParameter16x16.png"),
+				LargeImage = LoadLargeImage("familyReadParameter32x32.png"),
 				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
 			};
-			PushButtonData familyParameterReadData = CreateButtonData(familyParameterReadAttr);
+			PushButtonData familyReadParameterData = CreateButtonData(familyReadParameterAttr);
 
 			#endregion
 
@@ -869,7 +869,7 @@ namespace RevitPanel
 			
 			CreateRibbonPushButton(planPanel, weekplanningData);
 
-			CreateRibbonPushButton(planPanel, familyParameterReadData);
+			CreateRibbonPushButton(planPanel, familyReadParameterData);
 			#endregion
 
 			#region Testing
