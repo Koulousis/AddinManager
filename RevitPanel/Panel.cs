@@ -635,14 +635,14 @@ namespace RevitPanel
 			AddinAttr familyReadParameterAttr = new AddinAttr()
 			{
 				Name = "Family read parameter",
-				Title = " Family Read\rParameter",
+				Title = "Family Read\rParameter",
 				AssemblyPath = $@"{dllFolder}\FamilyReadParameter.dll",
 				ClassName = "FamilyReadParameter.Command",
 				ToolTip = "Select any amount of families, then select a parameter group and select a family to print it's parameters into a grid view",
 				LongDescription = "",
 				Image = LoadImage("familyReadParameter16x16.png"),
 				LargeImage = LoadLargeImage("familyReadParameter32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Family Read Parameter.pdf")
 			};
 			PushButtonData familyReadParameterData = CreateButtonData(familyReadParameterAttr);
 
