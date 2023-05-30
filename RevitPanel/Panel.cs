@@ -546,8 +546,7 @@ namespace RevitPanel
 				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
 			};
 			PushButtonData translationsData = CreateButtonData(translationsAttr);
-			#endregion
-
+			
 			#region Data to validate
 			//Add-in Checking tools
 			AddinAttr checkingToolsAttr = new AddinAttr()
@@ -649,7 +648,21 @@ namespace RevitPanel
 			#endregion
 
 			#region Testing
-			
+			//Add-in Eagle eye layouts
+			AddinAttr eagleEyeLayoutsAttr = new AddinAttr()
+			{
+				Name = "Eagle eye layouts",
+				Title = "Eagle eye layouts",
+				AssemblyPath = $@"{dllFolder}\EagleEyeLayouts.dll",
+				ClassName = "EagleEyeLayouts.Command",
+				ToolTip = "Export Eagle Eye layout images",
+				LongDescription = "",
+				Image = LoadImage("eagleEyeLayouts16x16.png"),
+				LargeImage = LoadLargeImage("eagleEyeLayouts32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+			};
+			PushButtonData eagleEyeLayoutsData = CreateButtonData(eagleEyeLayoutsAttr);
+			#endregion
 			#endregion
 
 			#endregion
@@ -873,7 +886,7 @@ namespace RevitPanel
 			#endregion
 
 			#region Testing
-			
+			CreateRibbonPushButton(planPanel, eagleEyeLayoutsData);
 			#endregion
 
 			#endregion
