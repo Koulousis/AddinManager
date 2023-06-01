@@ -546,6 +546,21 @@ namespace RevitPanel
 				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
 			};
 			PushButtonData translationsData = CreateButtonData(translationsAttr);
+
+			//Add-in Eagle eye layouts
+			AddinAttr eagleEyeLayoutsAttr = new AddinAttr()
+			{
+				Name = "Eagle eye layouts",
+				Title = "Eagle eye layouts",
+				AssemblyPath = $@"{dllFolder}\EagleEyeLayouts.dll",
+				ClassName = "EagleEyeLayouts.Command",
+				ToolTip = "Export Eagle Eye layout images",
+				LongDescription = "",
+				Image = LoadImage("eagleEyeLayouts16x16.png"),
+				LargeImage = LoadLargeImage("eagleEyeLayouts32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+			};
+			PushButtonData eagleEyeLayoutsData = CreateButtonData(eagleEyeLayoutsAttr);
 			
 			#region Data to validate
 			//Add-in Checking tools
@@ -648,20 +663,7 @@ namespace RevitPanel
 			#endregion
 
 			#region Testing
-			//Add-in Eagle eye layouts
-			AddinAttr eagleEyeLayoutsAttr = new AddinAttr()
-			{
-				Name = "Eagle eye layouts",
-				Title = "Eagle eye layouts",
-				AssemblyPath = $@"{dllFolder}\EagleEyeLayouts.dll",
-				ClassName = "EagleEyeLayouts.Command",
-				ToolTip = "Export Eagle Eye layout images",
-				LongDescription = "",
-				Image = LoadImage("eagleEyeLayouts16x16.png"),
-				LargeImage = LoadLargeImage("eagleEyeLayouts32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
-			};
-			PushButtonData eagleEyeLayoutsData = CreateButtonData(eagleEyeLayoutsAttr);
+			
 			#endregion
 			#endregion
 
@@ -850,7 +852,7 @@ namespace RevitPanel
 				LargeImage = LoadLargeImage("dataExport32x32.png")
 			};
 			PulldownButtonData dataExportPulldownButtonData = CreatePulldownButtonData(dataExportPulldownButtonAttr);
-			CreateRibbonPulldownButtons(dataPanel, dataExportPulldownButtonData, new List<PushButtonData>() { DwfxDwgPdfData, bumperLengthsData, translationsData });
+			CreateRibbonPulldownButtons(dataPanel, dataExportPulldownButtonData, new List<PushButtonData>() { DwfxDwgPdfData, bumperLengthsData, translationsData, eagleEyeLayoutsData });
 
 			//Data to validate
 			PulldownButtonAttr dataValidationPulldownButtonAttr = new PulldownButtonAttr()
@@ -886,7 +888,7 @@ namespace RevitPanel
 			#endregion
 
 			#region Testing
-			CreateRibbonPushButton(planPanel, eagleEyeLayoutsData);
+			
 			#endregion
 
 			#endregion
