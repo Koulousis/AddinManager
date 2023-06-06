@@ -662,9 +662,23 @@ namespace RevitPanel
 
 			#endregion
 
-			#region Testing
-			
 			#endregion
+
+			#region Testing
+			//Add-in Family upgrade
+			AddinAttr familyUpgradeAttr = new AddinAttr()
+			{
+				Name = "Family upgrade",
+				Title = "Family upgrade",
+				AssemblyPath = $@"{dllFolder}\FamilyUpgrade.dll",
+				ClassName = "FamilyUpgrade.Command",
+				ToolTip = "Upgrade selected families to newer version of Revit",
+				LongDescription = "",
+				Image = LoadImage("familyUpgrade16x16.png"),
+				LargeImage = LoadLargeImage("familyUpgrade32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Family upgrade.pdf")
+			};
+			PushButtonData familyUpgradeData = CreateButtonData(familyUpgradeAttr);
 			#endregion
 
 			#endregion
@@ -888,7 +902,7 @@ namespace RevitPanel
 			#endregion
 
 			#region Testing
-			
+			CreateRibbonPushButton(planPanel, familyUpgradeData);
 			#endregion
 
 			#endregion
