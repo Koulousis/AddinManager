@@ -558,7 +558,7 @@ namespace RevitPanel
 				LongDescription = "",
 				Image = LoadImage("eagleEyeLayouts16x16.png"),
 				LargeImage = LoadLargeImage("eagleEyeLayouts32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Eagle eye layouts.pdf")
 			};
 			PushButtonData eagleEyeLayoutsData = CreateButtonData(eagleEyeLayoutsAttr);
 			
