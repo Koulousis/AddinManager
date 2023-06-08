@@ -660,16 +660,11 @@ namespace RevitPanel
 			};
 			PushButtonData familyReadParameterData = CreateButtonData(familyReadParameterAttr);
 
-			#endregion
-
-			#endregion
-
-			#region Testing
 			//Add-in Family upgrade
 			AddinAttr familyUpgradeAttr = new AddinAttr()
 			{
 				Name = "Family upgrade",
-				Title = "Family upgrade",
+				Title = "Family\rUpgrade",
 				AssemblyPath = $@"{dllFolder}\FamilyUpgrade.dll",
 				ClassName = "FamilyUpgrade.Command",
 				ToolTip = "Upgrade selected families to newer version of Revit",
@@ -679,6 +674,13 @@ namespace RevitPanel
 				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Family upgrade.pdf")
 			};
 			PushButtonData familyUpgradeData = CreateButtonData(familyUpgradeAttr);
+
+			#endregion
+
+			#endregion
+
+			#region Testing
+			
 			#endregion
 
 			#endregion
@@ -899,10 +901,12 @@ namespace RevitPanel
 			CreateRibbonPushButton(planPanel, weekplanningData);
 
 			CreateRibbonPushButton(planPanel, familyReadParameterData);
+
+			CreateRibbonPushButton(planPanel, familyUpgradeData);
 			#endregion
 
 			#region Testing
-			CreateRibbonPushButton(planPanel, familyUpgradeData);
+			
 			#endregion
 
 			#endregion
