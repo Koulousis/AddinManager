@@ -667,8 +667,8 @@ namespace RevitPanel
 				Title = "Family\rUpgrade",
 				AssemblyPath = $@"{dllFolder}\FamilyUpgrade.dll",
 				ClassName = "FamilyUpgrade.Command",
-				ToolTip = "Upgrade selected families to newer version of Revit",
-				LongDescription = "",
+				ToolTip = "Upgrade selected families to the current version of Revit you are running this add-in",
+				LongDescription = "Example: You are using right now Revit 2023. You can select families older than 2023 and the add-in will upgrade them to 2023 version.",
 				Image = LoadImage("familyUpgrade16x16.png"),
 				LargeImage = LoadLargeImage("familyUpgrade32x32.png"),
 				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Family upgrade.pdf")
