@@ -23,6 +23,7 @@ namespace RevitPanel
 		{
 			#region Variables
 			const string dllFolder = @"J:\Drawings REVIT FAMILIES\02 NEW\Aris\Addins\PetersimeV2\DLLs";
+			const string testFolder = @"J:\Drawings REVIT FAMILIES\02 NEW\Aris\Addins\PetersimeV2\TestDLLs";
 			const string guidelineFolder = @"J:\Drawings REVIT FAMILIES\02 NEW\Aris\Addins\PetersimeV2\Guidelines";
 			#endregion
 
@@ -552,7 +553,7 @@ namespace RevitPanel
 			{
 				Name = "Eagle eye layouts",
 				Title = "Eagle eye layouts",
-				AssemblyPath = $@"{dllFolder}\EagleEyeLayouts.dll",
+				AssemblyPath = $@"{testFolder}\EagleEyeLayouts.dll",
 				ClassName = "EagleEyeLayouts.Command",
 				ToolTip = "Export Eagle Eye layout images",
 				LongDescription = "",
