@@ -386,11 +386,11 @@ namespace RevitPanel
 			#endregion
 
 			#region Pipe splits
-			//Add-in PP-RCT split
-			AddinAttr pprctSplitAttr = new AddinAttr()
+			//Add-in PP-RCT split 3m
+			AddinAttr pprctSplit3mAttr = new AddinAttr()
 			{
-				Name = "PP-RCT split",
-				Title = "PP-RCT split",
+				Name = "PP-RCT split 3m",
+				Title = "PP-RCT split 3m",
 				AssemblyPath = $@"{dllFolder}\SuspensionMarkers.dll",
 				ClassName = "SuspensionMarkers.PP_RCTSplit",
 				ToolTip = "Click on PP-RCT pipes to split in 3 meter. Does not reconnect taps",
@@ -399,7 +399,22 @@ namespace RevitPanel
 				LargeImage = LoadLargeImage("pprctSplit32x32.png"),
 				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
 			};
-			PushButtonData pprctSplitData = CreateButtonData(pprctSplitAttr);
+			PushButtonData pprctSplit3mData = CreateButtonData(pprctSplit3mAttr);
+
+			//Add-in PP-RCT split 4m
+			AddinAttr pprctSplit4mAttr = new AddinAttr()
+			{
+				Name = "PP-RCT split 4m",
+				Title = "PP-RCT split 4m",
+				AssemblyPath = $@"{dllFolder}\Plumbing\PpRctSplit.dll",
+				ClassName = "PpRctSplit.Command",
+				ToolTip = "Click on PP-RCT pipes to split in 4 meter. Does not reconnect taps",
+				LongDescription = "",
+				Image = LoadImage("pprctSplit16x16.png"),
+				LargeImage = LoadLargeImage("pprctSplit32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+			};
+			PushButtonData pprctSplit4mData = CreateButtonData(pprctSplit4mAttr);
 
 			//Add-in PP-RCT split all
 			AddinAttr pprctSplitAllAttr = new AddinAttr()
@@ -815,7 +830,7 @@ namespace RevitPanel
 				LargeImage = LoadLargeImage("pipeSplits32x32.png")
 			};
 			PulldownButtonData pipeSplitsPulldownButtonData = CreatePulldownButtonData(pipeSplitsPulldownButtonAttr);
-			CreateRibbonPulldownButtons(plumbingPanel, pipeSplitsPulldownButtonData, new List<PushButtonData>() { pprctSplitData, pprctSplitAllData });
+			CreateRibbonPulldownButtons(plumbingPanel, pipeSplitsPulldownButtonData, new List<PushButtonData>() { pprctSplit3mData, pprctSplit4mData, pprctSplitAllData });
 
 			//Connections
 			PulldownButtonAttr connectionsPulldownButtonAttr = new PulldownButtonAttr()
