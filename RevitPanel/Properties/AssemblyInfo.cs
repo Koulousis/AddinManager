@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Revit Panel")]
+[assembly: AssemblyTitle("Revit AddinManager")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Petersime")]
-[assembly: AssemblyProduct("Revit Panel")]
+[assembly: AssemblyProduct("Revit AddinManager")]
 [assembly: AssemblyCopyright("Copyright Petersime ©2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

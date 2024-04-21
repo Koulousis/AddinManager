@@ -9,23 +9,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using AddinManager.Attributes;
+using AddinManager.Buttons;
+using AddinManager.Misc;
+using AddinManager.Resources;
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Events;
+
 #endregion
 
 namespace RevitPanel
 {
-	public class Panel : IExternalApplication
+	public class AddinManager : IExternalApplication
 	{
 		public Result OnStartup(UIControlledApplication application)
 		{
-			#region Variables
-			const string dllFolder = @"J:\Drawings REVIT FAMILIES\02 NEW\Aris\Addins\PetersimeV2\DLLs";
-			const string testFolder = @"J:\Drawings REVIT FAMILIES\02 NEW\Aris\Addins\PetersimeV2\TestDLLs";
-			const string guidelineFolder = @"J:\Drawings REVIT FAMILIES\02 NEW\Aris\Addins\PetersimeV2\Guidelines";
-			#endregion
+			string username = System.Environment.UserName;
 
 			#region Add-ins
 
@@ -37,105 +38,105 @@ namespace RevitPanel
 			{
 				Name = "ODM Brackets",
 				Title = "ODM Brackets",
-				AssemblyPath = $@"{dllFolder}\SuspensionMarkers.dll",
+				AssemblyPath = $@"{Directories.Dlls}\SuspensionMarkers.dll",
 				ClassName = "SuspensionMarkers.ODMbrackets",
 				ToolTip = "Place all the suspension markers for ODM brackets + distance to roof",
 				LongDescription = "",
-				Image = LoadImage("odmBrackets16x16.png"),
-				LargeImage = LoadLargeImage("odmBrackets32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+				Image = Tools.LoadImage("odmBrackets16x16.png"),
+				LargeImage = Tools.LoadLargeImage("odmBrackets32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData odmBracketsData = CreateButtonData(odmBracketsAttr);
+			PushButtonData odmBracketsData = Data.CreatePushButtonData(odmBracketsAttr);
 
 			//Add-in R7 Rails
 			AddinAttr r7RailsAttr = new AddinAttr()
 			{
 				Name = "R7 Rails",
 				Title = "R7 Rails",
-				AssemblyPath = $@"{dllFolder}\SuspensionMarkers.dll",
+				AssemblyPath = $@"{Directories.Dlls}\SuspensionMarkers.dll",
 				ClassName = "SuspensionMarkers.R7Rails",
 				ToolTip = "Place all the suspension markers for R7 rails under rectangular ducts + distance to roof",
 				LongDescription = "",
-				Image = LoadImage("r7Rails16x16.png"),
-				LargeImage = LoadLargeImage("r7Rails32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+				Image = Tools.LoadImage("r7Rails16x16.png"),
+				LargeImage = Tools.LoadLargeImage("r7Rails32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData r7RailsData = CreateButtonData(r7RailsAttr);
+			PushButtonData r7RailsData = Data.CreatePushButtonData(r7RailsAttr);
 
 			//Add-in Duct through ceiling
 			AddinAttr ductThroughCeilingAttr = new AddinAttr()
 			{
 				Name = "Duct through ceiling",
 				Title = "Duct through ceiling",
-				AssemblyPath = $@"{dllFolder}\SuspensionMarkers.dll",
+				AssemblyPath = $@"{Directories.Dlls}\SuspensionMarkers.dll",
 				ClassName = "SuspensionMarkers.DuctTroughCeiling",
 				ToolTip = "Place all the suspension markers for R7 rails under rectangular ducts + distance to roof",
 				LongDescription = "",
-				Image = LoadImage("ductThroughCeiling16x16.png"),
-				LargeImage = LoadLargeImage("ductThroughCeiling32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+				Image = Tools.LoadImage("ductThroughCeiling16x16.png"),
+				LargeImage = Tools.LoadLargeImage("ductThroughCeiling32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData ductThroughCeilingData = CreateButtonData(ductThroughCeilingAttr);
+			PushButtonData ductThroughCeilingData = Data.CreatePushButtonData(ductThroughCeilingAttr);
 
 			//Add-in Duct through wall
 			AddinAttr ductThroughWallAttr = new AddinAttr()
 			{
 				Name = "Duct through wall",
 				Title = "Duct through wall",
-				AssemblyPath = $@"{dllFolder}\SuspensionMarkers.dll",
+				AssemblyPath = $@"{Directories.Dlls}\SuspensionMarkers.dll",
 				ClassName = "SuspensionMarkers.DuctTroughWall",
 				ToolTip = "Place all the suspension markers for ducts through walls",
 				LongDescription = "",
-				Image = LoadImage("ductThroughWall16x16.png"),
-				LargeImage = LoadLargeImage("ductThroughWall32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+				Image = Tools.LoadImage("ductThroughWall16x16.png"),
+				LargeImage = Tools.LoadLargeImage("ductThroughWall32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData ductThroughWallData = CreateButtonData(ductThroughWallAttr);
+			PushButtonData ductThroughWallData = Data.CreatePushButtonData(ductThroughWallAttr);
 
 			//Add-in Ventilator on duct
 			AddinAttr ventilatorOnDuctAttr = new AddinAttr()
 			{
 				Name = "Ventilator on duct",
 				Title = "Ventilator on duct",
-				AssemblyPath = $@"{dllFolder}\SuspensionMarkers.dll",
+				AssemblyPath = $@"{Directories.Dlls}\SuspensionMarkers.dll",
 				ClassName = "SuspensionMarkers.VentilatorOnDuct",
 				ToolTip = "Place all the suspension markers for ventilators on ducts",
 				LongDescription = "",
-				Image = LoadImage("ventilatorOnDuct16x16.png"),
-				LargeImage = LoadLargeImage("ventilatorOnDuct32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+				Image = Tools.LoadImage("ventilatorOnDuct16x16.png"),
+				LargeImage = Tools.LoadLargeImage("ventilatorOnDuct32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData ventilatorOnDuctData = CreateButtonData(ventilatorOnDuctAttr);
+			PushButtonData ventilatorOnDuctData = Data.CreatePushButtonData(ventilatorOnDuctAttr);
 
 			//Add-in Quantities
 			AddinAttr quantitiesAttr = new AddinAttr()
 			{
 				Name = "Quantities",
 				Title = "Quantities",
-				AssemblyPath = $@"{dllFolder}\SuspensionMarkers.dll",
+				AssemblyPath = $@"{Directories.Dlls}\SuspensionMarkers.dll",
 				ClassName = "SuspensionMarkers.Quantities",
 				ToolTip = "Fill in total quantities",
 				LongDescription = "",
-				Image = LoadImage("quantities16x16.png"),
-				LargeImage = LoadLargeImage("quantities32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+				Image = Tools.LoadImage("quantities16x16.png"),
+				LargeImage = Tools.LoadLargeImage("quantities32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData quantitiesData = CreateButtonData(quantitiesAttr);
+			PushButtonData quantitiesData = Data.CreatePushButtonData(quantitiesAttr);
 
 			//Add-in Take off main diameters
 			AddinAttr takeOffMainDiametersAttr = new AddinAttr()
 			{
 				Name = "Take off main diameters",
 				Title = "Take off main diameters",
-				AssemblyPath = $@"{dllFolder}\HVAC.dll",
+				AssemblyPath = $@"{Directories.Dlls}\HVAC.dll",
 				ClassName = "HVAC.DuctTapDiameters",
 				ToolTip = "Fill in the diameter of the main duct of all round curved take offs",
 				LongDescription = "",
-				Image = LoadImage("takeOffMainDiameters16x16.png"),
-				LargeImage = LoadLargeImage("takeOffMainDiameters32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+				Image = Tools.LoadImage("takeOffMainDiameters16x16.png"),
+				LargeImage = Tools.LoadLargeImage("takeOffMainDiameters32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData takeOffMainDiametersData = CreateButtonData(takeOffMainDiametersAttr);
+			PushButtonData takeOffMainDiametersData = Data.CreatePushButtonData(takeOffMainDiametersAttr);
 			#endregion
 
 			#region Duct split
@@ -144,30 +145,30 @@ namespace RevitPanel
 			{
 				Name = "Duct split",
 				Title = "Duct split",
-				AssemblyPath = $@"{dllFolder}\SuspensionMarkers.dll",
+				AssemblyPath = $@"{Directories.Dlls}\SuspensionMarkers.dll",
 				ClassName = "SuspensionMarkers.DuctSplit",
 				ToolTip = "Splits round and rectangular ducts",
 				LongDescription = "",
-				Image = LoadImage("ductSplit16x16.png"),
-				LargeImage = LoadLargeImage("ductSplit32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+				Image = Tools.LoadImage("ductSplit16x16.png"),
+				LargeImage = Tools.LoadLargeImage("ductSplit32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData ductSplitData = CreateButtonData(ductSplitAttr);
+			PushButtonData ductSplitData = Data.CreatePushButtonData(ductSplitAttr);
 
 			//Add-in RT Duct split 2xF
 			AddinAttr rtDuctSplitAttr = new AddinAttr()
 			{
 				Name = "RT Duct split 2xF",
 				Title = "RT Duct split 2xF",
-				AssemblyPath = $@"{dllFolder}\SuspensionMarkers.dll",
+				AssemblyPath = $@"{Directories.Dlls}\SuspensionMarkers.dll",
 				ClassName = "SuspensionMarkers.RTDuctSplit2F",
 				ToolTip = "Splits rectangular ducts with first & last duct + F",
 				LongDescription = "",
-				Image = LoadImage("rtDuctSplit16x16.png"),
-				LargeImage = LoadLargeImage("rtDuctSplit32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+				Image = Tools.LoadImage("rtDuctSplit16x16.png"),
+				LargeImage = Tools.LoadLargeImage("rtDuctSplit32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData rtDuctSplitData = CreateButtonData(rtDuctSplitAttr);
+			PushButtonData rtDuctSplitData = Data.CreatePushButtonData(rtDuctSplitAttr);
 			#endregion
 
 			#region Exhausts
@@ -176,30 +177,30 @@ namespace RevitPanel
 			{
 				Name = "Exhaust run",
 				Title = "Exhaust run",
-				AssemblyPath = $@"{dllFolder}\HVAC.dll",
+				AssemblyPath = $@"{Directories.Dlls}\HVAC.dll",
 				ClassName = "HVAC.ExhaustTower",
 				ToolTip = "Create a vertical duct through a roof with OKA, roof hood and 3 inspection doors",
 				LongDescription = "",
-				Image = LoadImage("exhaustRun16x16.png"),
-				LargeImage = LoadLargeImage("exhaustRun32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+				Image = Tools.LoadImage("exhaustRun16x16.png"),
+				LargeImage = Tools.LoadLargeImage("exhaustRun32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData exhaustRunData = CreateButtonData(exhaustRunAttr);
+			PushButtonData exhaustRunData = Data.CreatePushButtonData(exhaustRunAttr);
 
 			//Add-in Exhaust offset
 			AddinAttr exhaustOffsetAttr = new AddinAttr()
 			{
 				Name = "Exhaust offset",
 				Title = "Exhaust offset",
-				AssemblyPath = $@"{dllFolder}\HVAC.dll",
+				AssemblyPath = $@"{Directories.Dlls}\HVAC.dll",
 				ClassName = "HVAC.ExhaustOffset",
 				ToolTip = "Parallel displacement of a duct by inserting 2 elbows",
 				LongDescription = "",
-				Image = LoadImage("exhaustOffset16x16.png"),
-				LargeImage = LoadLargeImage("exhaustOffset32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+				Image = Tools.LoadImage("exhaustOffset16x16.png"),
+				LargeImage = Tools.LoadLargeImage("exhaustOffset32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData exhaustOffsetData = CreateButtonData(exhaustOffsetAttr);
+			PushButtonData exhaustOffsetData = Data.CreatePushButtonData(exhaustOffsetAttr);
 			#endregion
 
 			#region AHU
@@ -208,30 +209,30 @@ namespace RevitPanel
 			{
 				Name = "AHU editor",
 				Title = "AHU editor",
-				AssemblyPath = $@"{dllFolder}\HVAC.dll",
-				ClassName = "HVAC.AHUComponents",
+				AssemblyPath = $@"J:\Drawings REVIT FAMILIES\02 NEW\Aris\Projects\Mechanical\mechanical-ahu-editor\AhuEditor\bin\Debug\AhuEditor.dll",
+				ClassName = "AhuEditor.Command",
 				ToolTip = "AHU Editor window",
 				LongDescription = "",
-				Image = LoadImage("ahuEditor16x16.png"),
-				LargeImage = LoadLargeImage("ahuEditor32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\AHU editor.pdf")
+				Image = Tools.LoadImage("ahuEditor16x16.png"),
+				LargeImage = Tools.LoadLargeImage("ahuEditor32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\AHU editor.pdf")
 			};
-			PushButtonData ahuEditorData = CreateButtonData(ahuEditorAttr);
+			PushButtonData ahuEditorData = Data.CreatePushButtonData(ahuEditorAttr);
 
 			//Add-in Create 3D view
 			AddinAttr create3DViewAttr = new AddinAttr()
 			{
 				Name = "Create 3D view",
 				Title = "Create 3D view",
-				AssemblyPath = $@"{dllFolder}\HVAC.dll",
+				AssemblyPath = $@"{Directories.Dlls}\HVAC.dll",
 				ClassName = "HVAC.create3Dview",
 				ToolTip = "Create isometric view of an instance",
 				LongDescription = "",
-				Image = LoadImage("create3DView16x16.png"),
-				LargeImage = LoadLargeImage("create3DView32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+				Image = Tools.LoadImage("create3DView16x16.png"),
+				LargeImage = Tools.LoadLargeImage("create3DView32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData create3DViewData = CreateButtonData(create3DViewAttr);
+			PushButtonData create3DViewData = Data.CreatePushButtonData(create3DViewAttr);
 			#endregion
 
 			#region Accesorries
@@ -240,15 +241,15 @@ namespace RevitPanel
 			{
 				Name = "Insert CVD and VAV",
 				Title = "Insert CVD and VAV",
-				AssemblyPath = $@"{dllFolder}\HVAC.dll",
+				AssemblyPath = $@"{Directories.Dlls}\HVAC.dll",
 				ClassName = "HVAC.InsertConstantVolumeDamper",
 				ToolTip = "Insert CDV and VAV with VF connectors",
 				LongDescription = "",
-				Image = LoadImage("insertCvdVav16x16.png"),
-				LargeImage = LoadLargeImage("insertCvdVav32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+				Image = Tools.LoadImage("insertCvdVav16x16.png"),
+				LargeImage = Tools.LoadLargeImage("insertCvdVav32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData insertCvdVavData = CreateButtonData(insertCvdVavAttr);
+			PushButtonData insertCvdVavData = Data.CreatePushButtonData(insertCvdVavAttr);
 			#endregion
 
 			#endregion
@@ -261,60 +262,60 @@ namespace RevitPanel
 			{
 				Name = "Cable lengths",
 				Title = "Cable lengths",
-				AssemblyPath = $@"{dllFolder}\PETAddin.dll",
+				AssemblyPath = $@"{Directories.Dlls}\PETAddin.dll",
 				ClassName = "PETAddin.CableLength",
 				ToolTip = "Calculate distances of Cable Markers to ESB's",
 				LongDescription = "",
-				Image = LoadImage("cableLengths16x16.png"),
-				LargeImage = LoadLargeImage("cableLengths32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Cable lengths.pdf")
+				Image = Tools.LoadImage("cableLengths16x16.png"),
+				LargeImage = Tools.LoadLargeImage("cableLengths32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Cable lengths.pdf")
 			};
-			PushButtonData cableLengthsData = CreateButtonData(cableLengthsAttr);
+			PushButtonData cableLengthsData = Data.CreatePushButtonData(cableLengthsAttr);
 
 			//Add-in Remove conduit lines
 			AddinAttr removeConduitLinesAttr = new AddinAttr()
 			{
 				Name = "Remove conduit lines",
 				Title = "Remove conduit lines",
-				AssemblyPath = $@"{dllFolder}\PETAddin.dll",
+				AssemblyPath = $@"{Directories.Dlls}\PETAddin.dll",
 				ClassName = "PETAddin.removeConduitLines",
 				ToolTip = "Remove all the conduit lines",
 				LongDescription = "",
-				Image = LoadImage("removeConduitLines16x16.png"),
-				LargeImage = LoadLargeImage("removeConduitLines32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+				Image = Tools.LoadImage("removeConduitLines16x16.png"),
+				LargeImage = Tools.LoadLargeImage("removeConduitLines32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData removeConduitLinesData = CreateButtonData(removeConduitLinesAttr);
+			PushButtonData removeConduitLinesData = Data.CreatePushButtonData(removeConduitLinesAttr);
 
 			//Add-in Calculate line lengths
 			AddinAttr calculateLineLengthsAttr = new AddinAttr()
 			{
 				Name = "Calculate line lengths",
 				Title = "Calculate line lengths",
-				AssemblyPath = $@"{dllFolder}\PETAddin.dll",
+				AssemblyPath = $@"{Directories.Dlls}\PETAddin.dll",
 				ClassName = "PETAddin.calculateLineLengths",
 				ToolTip = "Calculate total lengths of lines per line type",
 				LongDescription = "",
-				Image = LoadImage("calculateLineLengths16x16.png"),
-				LargeImage = LoadLargeImage("calculateLineLengths32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+				Image = Tools.LoadImage("calculateLineLengths16x16.png"),
+				LargeImage = Tools.LoadLargeImage("calculateLineLengths32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData calculateLineLengthsData = CreateButtonData(calculateLineLengthsAttr);
+			PushButtonData calculateLineLengthsData = Data.CreatePushButtonData(calculateLineLengthsAttr);
 
 			//Add-in A cable info
 			AddinAttr aCableInfoAttr = new AddinAttr()
 			{
 				Name = "A cable info",
 				Title = "A cable info",
-				AssemblyPath = $@"{dllFolder}\PETAddin.dll",
+				AssemblyPath = $@"{Directories.Dlls}\PETAddin.dll",
 				ClassName = "PETAddin.ACableInfo",
 				ToolTip = "Show data of A cables",
 				LongDescription = "",
-				Image = LoadImage("aCableInfo16x16.png"),
-				LargeImage = LoadLargeImage("aCableInfo32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+				Image = Tools.LoadImage("aCableInfo16x16.png"),
+				LargeImage = Tools.LoadLargeImage("aCableInfo32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData aCableInfoData = CreateButtonData(aCableInfoAttr);
+			PushButtonData aCableInfoData = Data.CreatePushButtonData(aCableInfoAttr);
 			#endregion
 
 			#region Markers
@@ -323,30 +324,30 @@ namespace RevitPanel
 			{
 				Name = "Associate cable marker",
 				Title = "Associate cable marker",
-				AssemblyPath = $@"{dllFolder}\PETAddin.dll",
+				AssemblyPath = $@"{Directories.Dlls}\PETAddin.dll",
 				ClassName = "PETAddin.AssociateCableMarker",
 				ToolTip = "Associate cable marker parameters with family parameters",
 				LongDescription = "",
-				Image = LoadImage("associateCableMarker16x16.png"),
-				LargeImage = LoadLargeImage("associateCableMarker32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+				Image = Tools.LoadImage("associateCableMarker16x16.png"),
+				LargeImage = Tools.LoadLargeImage("associateCableMarker32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData associateCableMarkerData = CreateButtonData(associateCableMarkerAttr);
+			PushButtonData associateCableMarkerData = Data.CreatePushButtonData(associateCableMarkerAttr);
 
 			//Add-in Create cable markers
 			AddinAttr createCableMarkersAttr = new AddinAttr()
 			{
 				Name = "Create cable markers",
 				Title = "Create cable markers",
-				AssemblyPath = $@"{dllFolder}\PETAddin.dll",
+				AssemblyPath = $@"{Directories.Dlls}\PETAddin.dll",
 				ClassName = "PETAddin.createCableMarkers",
 				ToolTip = "Create and associate cable markers",
 				LongDescription = "",
-				Image = LoadImage("createCableMarkers16x16.png"),
-				LargeImage = LoadLargeImage("createCableMarkers32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Create cable markers.mp4")
+				Image = Tools.LoadImage("createCableMarkers16x16.png"),
+				LargeImage = Tools.LoadLargeImage("createCableMarkers32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Create cable markers.mp4")
 			};
-			PushButtonData createCableMarkersData = CreateButtonData(createCableMarkersAttr);
+			PushButtonData createCableMarkersData = Data.CreatePushButtonData(createCableMarkersAttr);
 			#endregion
 
 			#endregion
@@ -359,30 +360,30 @@ namespace RevitPanel
 			{
 				Name = "Replace reduction",
 				Title = "Replace reduction",
-				AssemblyPath = $@"{dllFolder}\HVAC.dll",
+				AssemblyPath = $@"{Directories.Dlls}\HVAC.dll",
 				ClassName = "HVAC.Piping.ReplaceReduction",
 				ToolTip = "Replace an invalid pipe reduction by a series of valid reductions",
 				LongDescription = "",
-				Image = LoadImage("replaceReduction16x16.png"),
-				LargeImage = LoadLargeImage("replaceReduction32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+				Image = Tools.LoadImage("replaceReduction16x16.png"),
+				LargeImage = Tools.LoadLargeImage("replaceReduction32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData replaceReductionData = CreateButtonData(replaceReductionAttr);
+			PushButtonData replaceReductionData = Data.CreatePushButtonData(replaceReductionAttr);
 
 			//Add-in Weld saddle diameters
 			AddinAttr weldSaddleDiametersAttr = new AddinAttr()
 			{
 				Name = "Weld saddle diameters",
 				Title = "Weld saddle diameters",
-				AssemblyPath = $@"{dllFolder}\PETAddin.dll",
+				AssemblyPath = $@"{Directories.Dlls}\PETAddin.dll",
 				ClassName = "PETAddin.WeldSaddleDiameters",
 				ToolTip = "Fill in the diameter of the main pipe of all PP-RCT weld saddles",
 				LongDescription = "",
-				Image = LoadImage("weldSaddleDiameters16x16.png"),
-				LargeImage = LoadLargeImage("weldSaddleDiameters32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+				Image = Tools.LoadImage("weldSaddleDiameters16x16.png"),
+				LargeImage = Tools.LoadLargeImage("weldSaddleDiameters32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData weldSaddleDiametersData = CreateButtonData(weldSaddleDiametersAttr);
+			PushButtonData weldSaddleDiametersData = Data.CreatePushButtonData(weldSaddleDiametersAttr);
 			#endregion
 
 			#region Pipe splits
@@ -391,45 +392,60 @@ namespace RevitPanel
 			{
 				Name = "PP-RCT split 3m",
 				Title = "PP-RCT split 3m",
-				AssemblyPath = $@"{dllFolder}\SuspensionMarkers.dll",
+				AssemblyPath = $@"{Directories.Dlls}\SuspensionMarkers.dll",
 				ClassName = "SuspensionMarkers.PP_RCTSplit",
 				ToolTip = "Click on PP-RCT pipes to split in 3 meter. Does not reconnect taps",
 				LongDescription = "",
-				Image = LoadImage("pprctSplit16x16.png"),
-				LargeImage = LoadLargeImage("pprctSplit32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+				Image = Tools.LoadImage("pprctSplit16x16.png"),
+				LargeImage = Tools.LoadLargeImage("pprctSplit32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData pprctSplit3mData = CreateButtonData(pprctSplit3mAttr);
+			PushButtonData pprctSplit3mData = Data.CreatePushButtonData(pprctSplit3mAttr);
 
 			//Add-in PP-RCT split 4m
 			AddinAttr pprctSplit4mAttr = new AddinAttr()
 			{
 				Name = "PP-RCT split 4m",
 				Title = "PP-RCT split 4m",
-				AssemblyPath = $@"{dllFolder}\Plumbing\PpRctSplit.dll",
+				AssemblyPath = $@"{Directories.Dlls}\Plumbing\PpRctSplit.dll",
 				ClassName = "PpRctSplit.Command",
 				ToolTip = "Click on PP-RCT pipes to split in 4 meter. Does not reconnect taps",
 				LongDescription = "",
-				Image = LoadImage("pprctSplit16x16.png"),
-				LargeImage = LoadLargeImage("pprctSplit32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+				Image = Tools.LoadImage("pprctSplit16x16.png"),
+				LargeImage = Tools.LoadLargeImage("pprctSplit32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData pprctSplit4mData = CreateButtonData(pprctSplit4mAttr);
+			PushButtonData pprctSplit4mData = Data.CreatePushButtonData(pprctSplit4mAttr);
 
-			//Add-in PP-RCT split all
-			AddinAttr pprctSplitAllAttr = new AddinAttr()
+			//Add-in PP-RCT split all 3m
+			AddinAttr pprctSplitAll3mAttr = new AddinAttr()
 			{
-				Name = "PP-RCT split all",
-				Title = "PP-RCT split all",
-				AssemblyPath = $@"{dllFolder}\SuspensionMarkers.dll",
+				Name = "PP-RCT split all 3m",
+				Title = "PP-RCT split all 3m",
+				AssemblyPath = $@"{Directories.Dlls}\SuspensionMarkers.dll",
 				ClassName = "SuspensionMarkers.PP_RCTSplitAll",
-				ToolTip = "Split all PP-RCT pipes",
+				ToolTip = "Split all PP-RCT pipes per 3m",
 				LongDescription = "",
-				Image = LoadImage("pprctSplitAll16x16.png"),
-				LargeImage = LoadLargeImage("pprctSplitAll32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+				Image = Tools.LoadImage("pprctSplitAll16x16.png"),
+				LargeImage = Tools.LoadLargeImage("pprctSplitAll32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData pprctSplitAllData = CreateButtonData(pprctSplitAllAttr);
+			PushButtonData pprctSplitAll3mData = Data.CreatePushButtonData(pprctSplitAll3mAttr);
+
+			//Add-in PP-RCT split all 4m
+			AddinAttr pprctSplitAll4mAttr = new AddinAttr()
+			{
+				Name = "PP-RCT split all 4m",
+				Title = "PP-RCT split all 4m",
+				AssemblyPath = $@"{Directories.Dlls}\Plumbing\PpRctSplitAll.dll",
+				ClassName = "PpRctSplitAll.Command",
+				ToolTip = "Split all PP-RCT pipes per 4m",
+				LongDescription = "",
+				Image = Tools.LoadImage("pprctSplitAll16x16.png"),
+				LargeImage = Tools.LoadLargeImage("pprctSplitAll32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
+			};
+			PushButtonData pprctSplitAll4mData = Data.CreatePushButtonData(pprctSplitAll4mAttr);
 			#endregion
 
 			#region Connections
@@ -438,30 +454,30 @@ namespace RevitPanel
 			{
 				Name = "Flex pipe connection",
 				Title = "Flex pipe connection",
-				AssemblyPath = $@"{dllFolder}\HVAC.dll",
+				AssemblyPath = $@"{Directories.Dlls}\HVAC.dll",
 				ClassName = "HVAC.Piping.FlexPipeConnection",
 				ToolTip = "Create a flex pipe connection between 2 pipes",
 				LongDescription = "",
-				Image = LoadImage("flexPipeConnection16x16.png"),
-				LargeImage = LoadLargeImage("flexPipeConnection32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Flexible pipe connection.pdf")
+				Image = Tools.LoadImage("flexPipeConnection16x16.png"),
+				LargeImage = Tools.LoadLargeImage("flexPipeConnection32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Flexible pipe connection.pdf")
 			};
-			PushButtonData flexPipeConnectionData = CreateButtonData(flexPipeConnectionAttr);
+			PushButtonData flexPipeConnectionData = Data.CreatePushButtonData(flexPipeConnectionAttr);
 
 			//Add-in Connect tap high pressure cleaning
 			AddinAttr connectTapHpcAttr = new AddinAttr()
 			{
 				Name = "Connect tap high pressure cleaning",
 				Title = "Connect tap high pressure cleaning",
-				AssemblyPath = $@"{dllFolder}\HVAC.dll",
+				AssemblyPath = $@"{Directories.Dlls}\HVAC.dll",
 				ClassName = "HVAC.Piping.ConnectTapHPC",
 				ToolTip = "Connect a high pressure cleaning tap to a pipe",
 				LongDescription = "",
-				Image = LoadImage("connectTapHpc16x16.png"),
-				LargeImage = LoadLargeImage("connectTapHpc32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+				Image = Tools.LoadImage("connectTapHpc16x16.png"),
+				LargeImage = Tools.LoadLargeImage("connectTapHpc32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData connectTapHpcData = CreateButtonData(connectTapHpcAttr);
+			PushButtonData connectTapHpcData = Data.CreatePushButtonData(connectTapHpcAttr);
 			#endregion
 
 			#region Incubators piping
@@ -470,15 +486,15 @@ namespace RevitPanel
 			{
 				Name = "2D symbols for XSTR",
 				Title = "2D symbols for XSTR",
-				AssemblyPath = $@"{dllFolder}\Piping2DDetail.dll",
+				AssemblyPath = $@"{Directories.Dlls}\Piping2DDetail.dll",
 				ClassName = "Piping2D.Piping2DDetailCommand",
 				ToolTip = "Change 2D scheme for compressed air | cooling water | humidifying",
 				LongDescription = "",
-				Image = LoadImage("piping2dDetail16x16.png"),
-				LargeImage = LoadLargeImage("piping2dDetail32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+				Image = Tools.LoadImage("piping2dDetail16x16.png"),
+				LargeImage = Tools.LoadLargeImage("piping2dDetail32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData piping2dDetailData = CreateButtonData(piping2dDetailAttr);
+			PushButtonData piping2dDetailData = Data.CreatePushButtonData(piping2dDetailAttr);
 			#endregion
 
 			#endregion
@@ -491,30 +507,30 @@ namespace RevitPanel
 			{
 				Name = "Data grid",
 				Title = "Data grid",
-				AssemblyPath = $@"{dllFolder}\DataGrid.dll",
+				AssemblyPath = $@"{Directories.Dlls}\DataGrid.dll",
 				ClassName = "DataGrid.parameterDatagrid",
 				ToolTip = "Data grid for family parameters",
 				LongDescription = "",
-				Image = LoadImage("dataGrid16x16.png"),
-				LargeImage = LoadLargeImage("dataGrid32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+				Image = Tools.LoadImage("dataGrid16x16.png"),
+				LargeImage = Tools.LoadLargeImage("dataGrid32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData dataGridData = CreateButtonData(dataGridAttr);
+			PushButtonData dataGridData = Data.CreatePushButtonData(dataGridAttr);
 
 			//Add-in Cable data
 			AddinAttr cableDataAttr = new AddinAttr()
 			{
 				Name = "Cable data",
 				Title = "Cable data",
-				AssemblyPath = $@"{dllFolder}\PETAddin.dll",
+				AssemblyPath = $@"{Directories.Dlls}\PETAddin.dll",
 				ClassName = "PETAddin.CheckCableData",
 				ToolTip = "Compare cable marker data with excel regulation file",
 				LongDescription = "",
-				Image = LoadImage("cableData16x16.png"),
-				LargeImage = LoadLargeImage("cableData32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Cable data.pdf")
+				Image = Tools.LoadImage("cableData16x16.png"),
+				LargeImage = Tools.LoadLargeImage("cableData32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Cable data.pdf")
 			};
-			PushButtonData cableDataData = CreateButtonData(cableDataAttr);
+			PushButtonData cableDataData = Data.CreatePushButtonData(cableDataAttr);
 			#endregion
 
 			#region Export data
@@ -523,60 +539,60 @@ namespace RevitPanel
 			{
 				Name = "Dwfx | Dwg | Pdf",
 				Title = "Dwfx | Dwg | Pdf",
-				AssemblyPath = $@"{dllFolder}\SheetExport.dll",
+				AssemblyPath = $@"{Directories.Dlls}\SheetExport.dll",
 				ClassName = "SheetExport.SheetExport",
 				ToolTip = "Exports files,data and sheets from Revit",
 				LongDescription = "",
-				Image = LoadImage("DwfxDwgPdf16x16.png"),
-				LargeImage = LoadLargeImage("DwfxDwgPdf32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Dwfx - Dwg - Pdf.pdf")
+				Image = Tools.LoadImage("DwfxDwgPdf16x16.png"),
+				LargeImage = Tools.LoadLargeImage("DwfxDwgPdf32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Dwfx - Dwg - Pdf.pdf")
 			};
-			PushButtonData DwfxDwgPdfData = CreateButtonData(DwfxDwgPdfAttr);
+			PushButtonData DwfxDwgPdfData = Data.CreatePushButtonData(DwfxDwgPdfAttr);
 
 			//Add-in Bumper lengths
 			AddinAttr bumperLengthsAttr = new AddinAttr()
 			{
 				Name = "Bumper lengths",
 				Title = "Bumper lengths",
-				AssemblyPath = $@"{dllFolder}\PETAddin.dll",
+				AssemblyPath = $@"{Directories.Dlls}\PETAddin.dll",
 				ClassName = "PETAddin.calculateBumperLengths",
 				ToolTip = "Calculate the bumper lengths based on filled regions",
 				LongDescription = "",
-				Image = LoadImage("bumperLengths16x16.png"),
-				LargeImage = LoadLargeImage("bumperLengths32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+				Image = Tools.LoadImage("bumperLengths16x16.png"),
+				LargeImage = Tools.LoadLargeImage("bumperLengths32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData bumperLengthsData = CreateButtonData(bumperLengthsAttr);
+			PushButtonData bumperLengthsData = Data.CreatePushButtonData(bumperLengthsAttr);
 
 			//Add-in Translations
 			AddinAttr translationsAttr = new AddinAttr()
 			{
 				Name = "Translations",
 				Title = "Translations",
-				AssemblyPath = $@"{dllFolder}\Translations.dll",
+				AssemblyPath = $@"{Directories.Dlls}\Translations.dll",
 				ClassName = "Translations.Translate",
 				ToolTip = "Add translations for cable Position, cable description, room name",
 				LongDescription = "",
-				Image = LoadImage("translations16x16.png"),
-				LargeImage = LoadLargeImage("translations32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+				Image = Tools.LoadImage("translations16x16.png"),
+				LargeImage = Tools.LoadLargeImage("translations32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData translationsData = CreateButtonData(translationsAttr);
+			PushButtonData translationsData = Data.CreatePushButtonData(translationsAttr);
 
 			//Add-in Eagle eye layouts
 			AddinAttr eagleEyeLayoutsAttr = new AddinAttr()
 			{
 				Name = "Eagle eye layouts",
 				Title = "Eagle eye layouts",
-				AssemblyPath = $@"{testFolder}\EagleEyeLayouts.dll",
+				AssemblyPath = $@"{Directories.TestDlls}\EagleEyeLayouts.dll",
 				ClassName = "EagleEyeLayouts.Command",
 				ToolTip = "Export Eagle Eye layout images",
 				LongDescription = "",
-				Image = LoadImage("eagleEyeLayouts16x16.png"),
-				LargeImage = LoadLargeImage("eagleEyeLayouts32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Eagle eye layouts.pdf")
+				Image = Tools.LoadImage("eagleEyeLayouts16x16.png"),
+				LargeImage = Tools.LoadLargeImage("eagleEyeLayouts32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Eagle eye layouts.pdf")
 			};
-			PushButtonData eagleEyeLayoutsData = CreateButtonData(eagleEyeLayoutsAttr);
+			PushButtonData eagleEyeLayoutsData = Data.CreatePushButtonData(eagleEyeLayoutsAttr);
 			
 			#region Data to validate
 			//Add-in Checking tools
@@ -584,15 +600,15 @@ namespace RevitPanel
 			{
 				Name = "Checking tools",
 				Title = "Checking tools",
-				AssemblyPath = $@"{dllFolder}\PETAddin.dll",
+				AssemblyPath = $@"{Directories.Dlls}\PETAddin.dll",
 				ClassName = "PETAddin.Tools",
 				ToolTip = "Opens a window with the available checking tools",
 				LongDescription = "",
-				Image = LoadImage("checkingTools16x16.png"),
-				LargeImage = LoadLargeImage("checkingTools32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+				Image = Tools.LoadImage("checkingTools16x16.png"),
+				LargeImage = Tools.LoadLargeImage("checkingTools32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData checkingToolsData = CreateButtonData(checkingToolsAttr);
+			PushButtonData checkingToolsData = Data.CreatePushButtonData(checkingToolsAttr);
 			#endregion
 
 			#endregion
@@ -605,45 +621,45 @@ namespace RevitPanel
 			{
 				Name = "Center room tags",
 				Title = "Center room tags",
-				AssemblyPath = $@"{dllFolder}\HVAC.dll",
+				AssemblyPath = $@"{Directories.Dlls}\HVAC.dll",
 				ClassName = "HVAC.Rooms.CenterAllRoomTags",
 				ToolTip = "Center all the room tags in the active view",
 				LongDescription = "",
-				Image = LoadImage("centerRoomsTags16x16.png"),
-				LargeImage = LoadLargeImage("centerRoomsTags32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+				Image = Tools.LoadImage("centerRoomsTags16x16.png"),
+				LargeImage = Tools.LoadLargeImage("centerRoomsTags32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData centerRoomsTagsData = CreateButtonData(centerRoomsTagsAttr);
+			PushButtonData centerRoomsTagsData = Data.CreatePushButtonData(centerRoomsTagsAttr);
 
 			//Add-in Structure Selector
 			AddinAttr structureSelectorAttr = new AddinAttr()
 			{
 				Name = "Structure Selector",
 				Title = "Structure Selector",
-				AssemblyPath = $@"{dllFolder}\StructureSelector.dll",
+				AssemblyPath = $@"{Directories.Dlls}\StructureSelector.dll",
 				ClassName = "StructureSelector.Command",
 				ToolTip = "Steel structure selector help the user to select a group of structure components",
 				LongDescription = "",
-				Image = LoadImage("structureSelector16x16.png"),
-				LargeImage = LoadLargeImage("structureSelector32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soons.pdf")
+				Image = Tools.LoadImage("structureSelector16x16.png"),
+				LargeImage = Tools.LoadLargeImage("structureSelector32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soons.pdf")
 			};
-			PushButtonData structureSelectorData = CreateButtonData(structureSelectorAttr);
+			PushButtonData structureSelectorData = Data.CreatePushButtonData(structureSelectorAttr);
 
 			//Add-in Renumber duct system
 			AddinAttr renumberDuctSystemAttr = new AddinAttr()
 			{
 				Name = "Renumber duct system",
 				Title = "Renumber duct system",
-				AssemblyPath = $@"{dllFolder}\RenumberElements 2016.dll",
+				AssemblyPath = $@"{Directories.Dlls}\RenumberElements 2016.dll",
 				ClassName = "RenumberElements",
 				ToolTip = "Add alphabetic and arithmetic order to a duct system for 3D views",
 				LongDescription = "",
-				Image = LoadImage("renumberDuctSystem16x16.png"),
-				LargeImage = LoadLargeImage("renumberDuctSystem32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+				Image = Tools.LoadImage("renumberDuctSystem16x16.png"),
+				LargeImage = Tools.LoadLargeImage("renumberDuctSystem32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData renumberDuctSystemData = CreateButtonData(renumberDuctSystemAttr);
+			PushButtonData renumberDuctSystemData = Data.CreatePushButtonData(renumberDuctSystemAttr);
 			#endregion
 
 			//Add-in Weekplanning
@@ -651,45 +667,45 @@ namespace RevitPanel
 			{
 				Name = "Weekplanning",
 				Title = "Weekplanning",
-				AssemblyPath = $@"{dllFolder}\Weekplanning.dll",
+				AssemblyPath = $@"{Directories.Dlls}\Weekplanning.dll",
 				ClassName = "Weekplanning.Command",
 				ToolTip = "Opens the weekplanning pdf file",
 				LongDescription = "",
-				Image = LoadImage("weekplanning16x16.png"),
-				LargeImage = LoadLargeImage("weekplanning32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Coming soon.pdf")
+				Image = Tools.LoadImage("weekplanning16x16.png"),
+				LargeImage = Tools.LoadLargeImage("weekplanning32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData weekplanningData = CreateButtonData(weekplanningAttr);
+			PushButtonData weekplanningData = Data.CreatePushButtonData(weekplanningAttr);
 
 			//Add-in Family parameter read
 			AddinAttr familyReadParameterAttr = new AddinAttr()
 			{
 				Name = "Family read parameter",
 				Title = "Family Read\rParameter",
-				AssemblyPath = $@"{dllFolder}\FamilyReadParameter.dll",
+				AssemblyPath = $@"{Directories.Dlls}\FamilyReadParameter.dll",
 				ClassName = "FamilyReadParameter.Command",
 				ToolTip = "Select any amount of families, then select a parameter group and select a family to print it's parameters into a grid view",
 				LongDescription = "",
-				Image = LoadImage("familyReadParameter16x16.png"),
-				LargeImage = LoadLargeImage("familyReadParameter32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Family Read Parameter.pdf")
+				Image = Tools.LoadImage("familyReadParameter16x16.png"),
+				LargeImage = Tools.LoadLargeImage("familyReadParameter32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Family Read Parameter.pdf")
 			};
-			PushButtonData familyReadParameterData = CreateButtonData(familyReadParameterAttr);
+			PushButtonData familyReadParameterData = Data.CreatePushButtonData(familyReadParameterAttr);
 
 			//Add-in Family upgrade
 			AddinAttr familyUpgradeAttr = new AddinAttr()
 			{
 				Name = "Family upgrade",
 				Title = "Family\rUpgrade",
-				AssemblyPath = $@"{dllFolder}\FamilyUpgrade.dll",
+				AssemblyPath = $@"{Directories.Dlls}\FamilyUpgrade.dll",
 				ClassName = "FamilyUpgrade.Command",
 				ToolTip = "Upgrade selected families to the current version of Revit you are running this add-in",
 				LongDescription = "Example: You are using right now Revit 2023. You can select families older than 2023 and the add-in will upgrade them to 2023 version.",
-				Image = LoadImage("familyUpgrade16x16.png"),
-				LargeImage = LoadLargeImage("familyUpgrade32x32.png"),
-				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelineFolder}\Family upgrade.pdf")
+				Image = Tools.LoadImage("familyUpgrade16x16.png"),
+				LargeImage = Tools.LoadLargeImage("familyUpgrade32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Family upgrade.pdf")
 			};
-			PushButtonData familyUpgradeData = CreateButtonData(familyUpgradeAttr);
+			PushButtonData familyUpgradeData = Data.CreatePushButtonData(familyUpgradeAttr);
 
 			#endregion
 
@@ -704,12 +720,13 @@ namespace RevitPanel
 			#region UI Elements
 			//Ribbon panel
 			application.CreateRibbonTab("Petersime");
+
 			RibbonPanel mechanicalPanel = application.CreateRibbonPanel("Petersime", "Mechanical");
 			RibbonPanel electricalPanel = application.CreateRibbonPanel("Petersime", "Electrical");
 			RibbonPanel plumbingPanel = application.CreateRibbonPanel("Petersime", "Plumbing");
 			RibbonPanel dataPanel = application.CreateRibbonPanel("Petersime", "Data");
 			RibbonPanel planPanel = application.CreateRibbonPanel("Petersime", "Plan");
-			
+
 			#region Mechanical
 			//Suspension
 			PulldownButtonAttr suspensionPulldownButtonAttr = new PulldownButtonAttr()
@@ -718,10 +735,10 @@ namespace RevitPanel
 				Title = "Suspension",
 				ToolTip = "Suspension add-ins",
 				LongDescription = "",
-				Image =  LoadImage("suspension16x16.png"),
-				LargeImage = LoadLargeImage("suspension32x32.png")
+				Image =  Tools.LoadImage("suspension16x16.png"),
+				LargeImage = Tools.LoadLargeImage("suspension32x32.png")
 			};
-			PulldownButtonData suspensionPulldownButtonData = CreatePulldownButtonData(suspensionPulldownButtonAttr);
+			PulldownButtonData suspensionPulldownButtonData = Data.CreatePulldownButtonData(suspensionPulldownButtonAttr);
 			CreateRibbonPulldownButtons(mechanicalPanel, suspensionPulldownButtonData, new List<PushButtonData>() { odmBracketsData, r7RailsData, ductThroughCeilingData, ductThroughWallData, ventilatorOnDuctData, quantitiesData, takeOffMainDiametersData });
 
 			//Duct splits
@@ -731,10 +748,10 @@ namespace RevitPanel
 				Title = "Duct\rsplits",
 				ToolTip = "Duct splits add-ins",
 				LongDescription = "",
-				Image = LoadImage("ductSplits16x16.png"),
-				LargeImage = LoadLargeImage("ductSplits32x32.png")
+				Image = Tools.LoadImage("ductSplits16x16.png"),
+				LargeImage = Tools.LoadLargeImage("ductSplits32x32.png")
 			};
-			PulldownButtonData ductSplitPulldownButtonData = CreatePulldownButtonData(ductSplitPulldownButtonAttr);
+			PulldownButtonData ductSplitPulldownButtonData = Data.CreatePulldownButtonData(ductSplitPulldownButtonAttr);
 			CreateRibbonPulldownButtons(mechanicalPanel, ductSplitPulldownButtonData, new List<PushButtonData>() { ductSplitData, rtDuctSplitData });
 
 			//Exhausts
@@ -744,10 +761,10 @@ namespace RevitPanel
 				Title = "Exhausts",
 				ToolTip = "Exhausts add-ins",
 				LongDescription = "",
-				Image = LoadImage("exhausts16x16.png"),
-				LargeImage = LoadLargeImage("exhausts32x32.png")
+				Image = Tools.LoadImage("exhausts16x16.png"),
+				LargeImage = Tools.LoadLargeImage("exhausts32x32.png")
 			};
-			PulldownButtonData exhaustsPulldownButtonData = CreatePulldownButtonData(exhaustsPulldownButtonAttr);
+			PulldownButtonData exhaustsPulldownButtonData = Data.CreatePulldownButtonData(exhaustsPulldownButtonAttr);
 			CreateRibbonPulldownButtons(mechanicalPanel, exhaustsPulldownButtonData, new List<PushButtonData>() { exhaustRunData, exhaustOffsetData });
 
 			//AHU
@@ -757,10 +774,10 @@ namespace RevitPanel
 				Title = "AHU",
 				ToolTip = "AHU add-ins",
 				LongDescription = "",
-				Image = LoadImage("ahu16x16.png"),
-				LargeImage = LoadLargeImage("ahu32x32.png")
+				Image = Tools.LoadImage("ahu16x16.png"),
+				LargeImage = Tools.LoadLargeImage("ahu32x32.png")
 			};
-			PulldownButtonData ahuPulldownButtonData = CreatePulldownButtonData(ahuPulldownButtonAttr);
+			PulldownButtonData ahuPulldownButtonData = Data.CreatePulldownButtonData(ahuPulldownButtonAttr);
 			CreateRibbonPulldownButtons(mechanicalPanel, ahuPulldownButtonData, new List<PushButtonData>() { ahuEditorData, create3DViewData });
 
 			//Accessories
@@ -770,10 +787,10 @@ namespace RevitPanel
 				Title = "Accessories",
 				ToolTip = "Accessories add-ins",
 				LongDescription = "",
-				Image = LoadImage("accessories16x16.png"),
-				LargeImage = LoadLargeImage("accessories32x32.png")
+				Image = Tools.LoadImage("accessories16x16.png"),
+				LargeImage = Tools.LoadLargeImage("accessories32x32.png")
 			};
-			PulldownButtonData accessoriesPulldownButtonData = CreatePulldownButtonData(accessoriesPulldownButtonAttr);
+			PulldownButtonData accessoriesPulldownButtonData = Data.CreatePulldownButtonData(accessoriesPulldownButtonAttr);
 			CreateRibbonPulldownButtons(mechanicalPanel, accessoriesPulldownButtonData, new List<PushButtonData>() { insertCvdVavData });
 			#endregion
 
@@ -785,10 +802,10 @@ namespace RevitPanel
 				Title = "Cables",
 				ToolTip = "Cables add-ins",
 				LongDescription = "",
-				Image = LoadImage("cables16x16.png"),
-				LargeImage = LoadLargeImage("cables32x32.png")
+				Image = Tools.LoadImage("cables16x16.png"),
+				LargeImage = Tools.LoadLargeImage("cables32x32.png")
 			};
-			PulldownButtonData cablesPulldownButtonData = CreatePulldownButtonData(cablesPulldownButtonAttr);
+			PulldownButtonData cablesPulldownButtonData = Data.CreatePulldownButtonData(cablesPulldownButtonAttr);
 			CreateRibbonPulldownButtons(electricalPanel, cablesPulldownButtonData, new List<PushButtonData>() { cableLengthsData, removeConduitLinesData, calculateLineLengthsData, aCableInfoData });
 
 			//Markers
@@ -798,10 +815,10 @@ namespace RevitPanel
 				Title = "Markers",
 				ToolTip = "Markers add-ins",
 				LongDescription = "",
-				Image = LoadImage("markers16x16.png"),
-				LargeImage = LoadLargeImage("markers32x32.png")
+				Image = Tools.LoadImage("markers16x16.png"),
+				LargeImage = Tools.LoadLargeImage("markers32x32.png")
 			};
-			PulldownButtonData markersPulldownButtonData = CreatePulldownButtonData(markersPulldownButtonAttr);
+			PulldownButtonData markersPulldownButtonData = Data.CreatePulldownButtonData(markersPulldownButtonAttr);
 			CreateRibbonPulldownButtons(electricalPanel, markersPulldownButtonData, new List<PushButtonData>() { associateCableMarkerData, createCableMarkersData });
 			#endregion
 
@@ -813,10 +830,10 @@ namespace RevitPanel
 				Title = "Pipe\redits",
 				ToolTip = "Pipe edits add-ins",
 				LongDescription = "",
-				Image = LoadImage("pipeEdits16x16.png"),
-				LargeImage = LoadLargeImage("pipeEdits32x32.png")
+				Image = Tools.LoadImage("pipeEdits16x16.png"),
+				LargeImage = Tools.LoadLargeImage("pipeEdits32x32.png")
 			};
-			PulldownButtonData pipeEditsPulldownButtonData = CreatePulldownButtonData(pipeEditsPulldownButtonAttr);
+			PulldownButtonData pipeEditsPulldownButtonData = Data.CreatePulldownButtonData(pipeEditsPulldownButtonAttr);
 			CreateRibbonPulldownButtons(plumbingPanel, pipeEditsPulldownButtonData, new List<PushButtonData>() { replaceReductionData, weldSaddleDiametersData });
 
 			//Pipe splits
@@ -826,11 +843,11 @@ namespace RevitPanel
 				Title = "Pipe\rsplits",
 				ToolTip = "Pipe splits add-ins",
 				LongDescription = "",
-				Image = LoadImage("pipeSplits16x16.png"),
-				LargeImage = LoadLargeImage("pipeSplits32x32.png")
+				Image = Tools.LoadImage("pipeSplits16x16.png"),
+				LargeImage = Tools.LoadLargeImage("pipeSplits32x32.png")
 			};
-			PulldownButtonData pipeSplitsPulldownButtonData = CreatePulldownButtonData(pipeSplitsPulldownButtonAttr);
-			CreateRibbonPulldownButtons(plumbingPanel, pipeSplitsPulldownButtonData, new List<PushButtonData>() { pprctSplit3mData, pprctSplit4mData, pprctSplitAllData });
+			PulldownButtonData pipeSplitsPulldownButtonData = Data.CreatePulldownButtonData(pipeSplitsPulldownButtonAttr);
+			CreateRibbonPulldownButtons(plumbingPanel, pipeSplitsPulldownButtonData, new List<PushButtonData>() { pprctSplit3mData, pprctSplit4mData, pprctSplitAll3mData, pprctSplitAll4mData });
 
 			//Connections
 			PulldownButtonAttr connectionsPulldownButtonAttr = new PulldownButtonAttr()
@@ -839,10 +856,10 @@ namespace RevitPanel
 				Title = "Connections",
 				ToolTip = "Connections add-ins",
 				LongDescription = "",
-				Image = LoadImage("connections16x16.png"),
-				LargeImage = LoadLargeImage("connections32x32.png")
+				Image = Tools.LoadImage("connections16x16.png"),
+				LargeImage = Tools.LoadLargeImage("connections32x32.png")
 			};
-			PulldownButtonData connectionsPulldownButtonData = CreatePulldownButtonData(connectionsPulldownButtonAttr);
+			PulldownButtonData connectionsPulldownButtonData = Data.CreatePulldownButtonData(connectionsPulldownButtonAttr);
 			CreateRibbonPulldownButtons(plumbingPanel, connectionsPulldownButtonData, new List<PushButtonData>() { flexPipeConnectionData, connectTapHpcData });
 
 			//Incubators piping
@@ -852,10 +869,10 @@ namespace RevitPanel
 				Title = "Incubators\rpiping",
 				ToolTip = "Incubators piping add-ins",
 				LongDescription = "",
-				Image = LoadImage("incubatorsPiping16x16.png"),
-				LargeImage = LoadLargeImage("incubatorsPiping32x32.png")
+				Image = Tools.LoadImage("incubatorsPiping16x16.png"),
+				LargeImage = Tools.LoadLargeImage("incubatorsPiping32x32.png")
 			};
-			PulldownButtonData incubatorsPipingPulldownButtonData = CreatePulldownButtonData(incubatorsPipingPulldownButtonAttr);
+			PulldownButtonData incubatorsPipingPulldownButtonData = Data.CreatePulldownButtonData(incubatorsPipingPulldownButtonAttr);
 			CreateRibbonPulldownButtons(plumbingPanel, incubatorsPipingPulldownButtonData, new List<PushButtonData>() { piping2dDetailData });
 			#endregion
 
@@ -867,10 +884,10 @@ namespace RevitPanel
 				Title = "Data\rcompare",
 				ToolTip = "Data compare add-ins",
 				LongDescription = "",
-				Image = LoadImage("dataCompare16x16.png"),
-				LargeImage = LoadLargeImage("dataCompare32x32.png")
+				Image = Tools.LoadImage("dataCompare16x16.png"),
+				LargeImage = Tools.LoadLargeImage("dataCompare32x32.png")
 			};
-			PulldownButtonData dataComparePulldownButtonData = CreatePulldownButtonData(dataComparePulldownButtonAttr);
+			PulldownButtonData dataComparePulldownButtonData = Data.CreatePulldownButtonData(dataComparePulldownButtonAttr);
 			CreateRibbonPulldownButtons(dataPanel, dataComparePulldownButtonData, new List<PushButtonData>() { dataGridData, cableDataData });
 
 			//Data to export
@@ -880,10 +897,10 @@ namespace RevitPanel
 				Title = "Data\rexport",
 				ToolTip = "Data export add-ins",
 				LongDescription = "",
-				Image = LoadImage("dataExport16x16.png"),
-				LargeImage = LoadLargeImage("dataExport32x32.png")
+				Image = Tools.LoadImage("dataExport16x16.png"),
+				LargeImage = Tools.LoadLargeImage("dataExport32x32.png")
 			};
-			PulldownButtonData dataExportPulldownButtonData = CreatePulldownButtonData(dataExportPulldownButtonAttr);
+			PulldownButtonData dataExportPulldownButtonData = Data.CreatePulldownButtonData(dataExportPulldownButtonAttr);
 			CreateRibbonPulldownButtons(dataPanel, dataExportPulldownButtonData, new List<PushButtonData>() { DwfxDwgPdfData, bumperLengthsData, translationsData, eagleEyeLayoutsData });
 
 			//Data to validate
@@ -893,10 +910,10 @@ namespace RevitPanel
 				Title = "Data\rvalidation",
 				ToolTip = "Data validation add-ins",
 				LongDescription = "",
-				Image = LoadImage("dataValidation16x16.png"),
-				LargeImage = LoadLargeImage("dataValidation32x32.png")
+				Image = Tools.LoadImage("dataValidation16x16.png"),
+				LargeImage = Tools.LoadLargeImage("dataValidation32x32.png")
 			};
-			PulldownButtonData dataValidationPulldownButtonData = CreatePulldownButtonData(dataValidationPulldownButtonAttr);
+			PulldownButtonData dataValidationPulldownButtonData = Data.CreatePulldownButtonData(dataValidationPulldownButtonAttr);
 			CreateRibbonPulldownButtons(dataPanel, dataValidationPulldownButtonData, new List<PushButtonData>() { checkingToolsData });
 			#endregion
 
@@ -908,10 +925,10 @@ namespace RevitPanel
 				Title = "Revit\rshortcuts",
 				ToolTip = "Revit shortcuts add-ins",
 				LongDescription = "",
-				Image = LoadImage("revitShortcuts16x16.png"),
-				LargeImage = LoadLargeImage("revitShortcuts32x32.png")
+				Image = Tools.LoadImage("revitShortcuts16x16.png"),
+				LargeImage = Tools.LoadLargeImage("revitShortcuts32x32.png")
 			};
-			PulldownButtonData revitShortcutsPulldownButtonData = CreatePulldownButtonData(revitShortcutsPulldownButtonAttr);
+			PulldownButtonData revitShortcutsPulldownButtonData = Data.CreatePulldownButtonData(revitShortcutsPulldownButtonAttr);
 			CreateRibbonPulldownButtons(planPanel, revitShortcutsPulldownButtonData, new List<PushButtonData>() { centerRoomsTagsData, structureSelectorData, renumberDuctSystemData });
 			
 			CreateRibbonPushButton(planPanel, weekplanningData);
@@ -936,45 +953,7 @@ namespace RevitPanel
 		}
 
 		#region Buttons data
-		PushButtonData CreateButtonData(AddinAttr buttonAttr)
-		{
-			PushButtonData pushButtonData = new PushButtonData(buttonAttr.Name, buttonAttr.Title, buttonAttr.AssemblyPath, buttonAttr.ClassName)
-			{
-				ToolTip = buttonAttr.ToolTip,
-				LongDescription = buttonAttr.LongDescription,
-				Image = buttonAttr.Image,
-				LargeImage = buttonAttr.LargeImage
-			};
-			pushButtonData.SetContextualHelp(buttonAttr.Help);
-
-			return pushButtonData;
-		}
-
-		SplitButtonData CreateSplitButtonData(SplitButtonAttr splitButtonAttr)
-		{
-			SplitButtonData splitButtonData = new SplitButtonData(splitButtonAttr.Name, splitButtonAttr.Title)
-			{
-				ToolTip = splitButtonAttr.ToolTip,
-				LongDescription = splitButtonAttr.LongDescription,
-				Image = splitButtonAttr.Image,
-				LargeImage = splitButtonAttr.LargeImage
-			};
-
-			return splitButtonData;
-		}
-
-		PulldownButtonData CreatePulldownButtonData(PulldownButtonAttr pulldownButtonAttr)
-		{
-			PulldownButtonData pulldownButtonData = new PulldownButtonData(pulldownButtonAttr.Name, pulldownButtonAttr.Title)
-			{
-				ToolTip = pulldownButtonAttr.ToolTip,
-				LongDescription = pulldownButtonAttr.LongDescription,
-				Image = pulldownButtonAttr.Image,
-				LargeImage = pulldownButtonAttr.LargeImage
-			};
-
-			return pulldownButtonData;
-		}
+		
 		#endregion
 
 		#region Ribbon buttons
@@ -1057,36 +1036,6 @@ namespace RevitPanel
 		{
 			TextBoxData textBoxData = new TextBoxData("MyTextBox");
 			Autodesk.Revit.UI.TextBox textBox = ribbonPanel.AddItem(textBoxData) as TextBox;
-		}
-		#endregion
-
-		#region Other methods
-		private string GetImagePath(string imageName)
-		{
-			string assemblyDirectory = @"J:\Drawings REVIT FAMILIES\02 NEW\Aris\Addins\PetersimeV2\RevitAddins\RevitPanel\RevitPanel\Images\";
-			string imagePath = Path.Combine(assemblyDirectory, imageName);
-
-			return imagePath;
-		}
-
-		private string GetLargeImagePath(string largeImageName)
-		{
-			string assemblyDirectory = @"J:\Drawings REVIT FAMILIES\02 NEW\Aris\Addins\PetersimeV2\RevitAddins\RevitPanel\RevitPanel\LargeImages\";
-			string largeImagePath = Path.Combine(assemblyDirectory, largeImageName);
-
-			return largeImagePath;
-		}
-
-		private BitmapImage LoadImage(string imageName)
-		{
-			BitmapImage Image = File.Exists(GetImagePath(imageName)) ? new BitmapImage(new Uri(GetImagePath(imageName))) : null;
-			return Image;
-		}
-
-		private BitmapImage LoadLargeImage(string largeImageName)
-		{
-			BitmapImage LargeImage = File.Exists(GetLargeImagePath(largeImageName)) ? new BitmapImage(new Uri(GetLargeImagePath(largeImageName))) : null;
-			return LargeImage;
 		}
 		#endregion
 	}

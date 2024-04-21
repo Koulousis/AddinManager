@@ -7,8 +7,8 @@
     <ProjectGuid>{AD4EA6B0-C868-47BD-A155-8690E8D13E81}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RevitPanel</RootNamespace>
-    <AssemblyName>RevitPanel</AssemblyName>
+    <RootNamespace>AddinManager</RootNamespace>
+    <AssemblyName>AddinManager</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -64,19 +64,22 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PulldownButtonAttr.cs" />
-    <Compile Include="SplitButtonAttr.cs" />
-    <Compile Include="Panel.cs" />
+    <Compile Include="Attributes\PulldownButtonAttr.cs" />
+    <Compile Include="Attributes\SplitButtonAttr.cs" />
+    <Compile Include="AddinManager.cs" />
+    <Compile Include="Buttons\Data.cs" />
+    <Compile Include="Buttons\Ribbon.cs" />
+    <Compile Include="Misc\Tools.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="AddinAttr.cs" />
+    <Compile Include="Attributes\AddinAttr.cs" />
+    <Compile Include="Resources\Directories.cs" />
+    <Compile Include="Tabs\Petersime\Panels\Mechanical.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Panel.addin" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Images\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="LargeImages\accessories32x32.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

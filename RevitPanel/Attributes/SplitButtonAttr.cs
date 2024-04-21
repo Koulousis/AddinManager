@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media.Imaging;
+﻿using System.Windows.Media.Imaging;
 
-namespace RevitPanel
+namespace AddinManager.Attributes
 {
-	public class PulldownButtonAttr
+	public class SplitButtonAttr
 	{
 		public string Name { get; set; }
 		public string Title { get; set; }
@@ -21,9 +15,9 @@ namespace RevitPanel
 		/// Image property: typically 16x16 pixels.
 		/// Large Image property: typically 32x32 pixels.
 		/// </remarks>
-		public PulldownButtonAttr()
+		public SplitButtonAttr()
 		{
-			
+
 		}
 	}
 }
