@@ -389,10 +389,18 @@ namespace RevitPanel
 			#region Pipe splits
 			//Add-in PP-RCT split 3m
 			AddinAttr pprctSplit3mAttr = new AddinAttr()
+			//Add-in PP-RCT split
+			AddinAttr pprctSplitAttr = new AddinAttr()
 			{
+<<<<<<< HEAD:RevitPanel/AddinManager.cs
 				Name = "PP-RCT split 3m",
 				Title = "PP-RCT split 3m",
 				AssemblyPath = $@"{Directories.Dlls}\SuspensionMarkers.dll",
+=======
+				Name = "PP-RCT split",
+				Title = "PP-RCT split",
+				AssemblyPath = $@"{dllFolder}\SuspensionMarkers.dll",
+>>>>>>> parent of 967a787 (Added PP RCT Split 4m and renamed the existing one to 3m):RevitPanel/Panel.cs
 				ClassName = "SuspensionMarkers.PP_RCTSplit",
 				ToolTip = "Click on PP-RCT pipes to split in 3 meter. Does not reconnect taps",
 				LongDescription = "",
@@ -400,6 +408,7 @@ namespace RevitPanel
 				LargeImage = Tools.LoadLargeImage("pprctSplit32x32.png"),
 				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
+<<<<<<< HEAD:RevitPanel/AddinManager.cs
 			PushButtonData pprctSplit3mData = Data.CreatePushButtonData(pprctSplit3mAttr);
 
 			//Add-in PP-RCT split 4m
@@ -416,6 +425,9 @@ namespace RevitPanel
 				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
 			PushButtonData pprctSplit4mData = Data.CreatePushButtonData(pprctSplit4mAttr);
+=======
+			PushButtonData pprctSplitData = CreateButtonData(pprctSplitAttr);
+>>>>>>> parent of 967a787 (Added PP RCT Split 4m and renamed the existing one to 3m):RevitPanel/Panel.cs
 
 			//Add-in PP-RCT split all 3m
 			AddinAttr pprctSplitAll3mAttr = new AddinAttr()
@@ -846,8 +858,13 @@ namespace RevitPanel
 				Image = Tools.LoadImage("pipeSplits16x16.png"),
 				LargeImage = Tools.LoadLargeImage("pipeSplits32x32.png")
 			};
+<<<<<<< HEAD:RevitPanel/AddinManager.cs
 			PulldownButtonData pipeSplitsPulldownButtonData = Data.CreatePulldownButtonData(pipeSplitsPulldownButtonAttr);
 			CreateRibbonPulldownButtons(plumbingPanel, pipeSplitsPulldownButtonData, new List<PushButtonData>() { pprctSplit3mData, pprctSplit4mData, pprctSplitAll3mData, pprctSplitAll4mData });
+=======
+			PulldownButtonData pipeSplitsPulldownButtonData = CreatePulldownButtonData(pipeSplitsPulldownButtonAttr);
+			CreateRibbonPulldownButtons(plumbingPanel, pipeSplitsPulldownButtonData, new List<PushButtonData>() { pprctSplitData, pprctSplitAllData });
+>>>>>>> parent of 967a787 (Added PP RCT Split 4m and renamed the existing one to 3m):RevitPanel/Panel.cs
 
 			//Connections
 			PulldownButtonAttr connectionsPulldownButtonAttr = new PulldownButtonAttr()
