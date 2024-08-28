@@ -11,14 +11,10 @@ using AddinManager.Misc;
 
 namespace AddinManager.Tabs.Petersime.Panels
 {
-	public class Mechanical
+	public static class MechanicalPanel
 	{
-	}
-
-	void DefineAddins()
-	{
-		#region Mechanical
-
+		public static void DefineAddins()
+		{
 			#region Suspension
 			//Add-in ODM Brackets
 			AddinAttr odmBracketsAttr = new AddinAttr()
@@ -33,7 +29,7 @@ namespace AddinManager.Tabs.Petersime.Panels
 				LargeImage = Tools.LoadLargeImage("odmBrackets32x32.png"),
 				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData odmBracketsData = Data.CreatePushButtonData(odmBracketsAttr);
+			PushButtonData odmBracketsData = ButtonStructure.CreatePushButtonData(odmBracketsAttr);
 
 			//Add-in R7 Rails
 			AddinAttr r7RailsAttr = new AddinAttr()
@@ -48,7 +44,7 @@ namespace AddinManager.Tabs.Petersime.Panels
 				LargeImage = Tools.LoadLargeImage("r7Rails32x32.png"),
 				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData r7RailsData = Data.CreatePushButtonData(r7RailsAttr);
+			PushButtonData r7RailsData = ButtonStructure.CreatePushButtonData(r7RailsAttr);
 
 			//Add-in Duct through ceiling
 			AddinAttr ductThroughCeilingAttr = new AddinAttr()
@@ -63,7 +59,7 @@ namespace AddinManager.Tabs.Petersime.Panels
 				LargeImage = Tools.LoadLargeImage("ductThroughCeiling32x32.png"),
 				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData ductThroughCeilingData = Data.CreatePushButtonData(ductThroughCeilingAttr);
+			PushButtonData ductThroughCeilingData = ButtonStructure.CreatePushButtonData(ductThroughCeilingAttr);
 
 			//Add-in Duct through wall
 			AddinAttr ductThroughWallAttr = new AddinAttr()
@@ -78,7 +74,7 @@ namespace AddinManager.Tabs.Petersime.Panels
 				LargeImage = Tools.LoadLargeImage("ductThroughWall32x32.png"),
 				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData ductThroughWallData = Data.CreatePushButtonData(ductThroughWallAttr);
+			PushButtonData ductThroughWallData = ButtonStructure.CreatePushButtonData(ductThroughWallAttr);
 
 			//Add-in Ventilator on duct
 			AddinAttr ventilatorOnDuctAttr = new AddinAttr()
@@ -93,7 +89,7 @@ namespace AddinManager.Tabs.Petersime.Panels
 				LargeImage = Tools.LoadLargeImage("ventilatorOnDuct32x32.png"),
 				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData ventilatorOnDuctData = Data.CreatePushButtonData(ventilatorOnDuctAttr);
+			PushButtonData ventilatorOnDuctData = ButtonStructure.CreatePushButtonData(ventilatorOnDuctAttr);
 
 			//Add-in Quantities
 			AddinAttr quantitiesAttr = new AddinAttr()
@@ -108,7 +104,7 @@ namespace AddinManager.Tabs.Petersime.Panels
 				LargeImage = Tools.LoadLargeImage("quantities32x32.png"),
 				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData quantitiesData = Data.CreatePushButtonData(quantitiesAttr);
+			PushButtonData quantitiesData = ButtonStructure.CreatePushButtonData(quantitiesAttr);
 
 			//Add-in Take off main diameters
 			AddinAttr takeOffMainDiametersAttr = new AddinAttr()
@@ -123,7 +119,7 @@ namespace AddinManager.Tabs.Petersime.Panels
 				LargeImage = Tools.LoadLargeImage("takeOffMainDiameters32x32.png"),
 				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData takeOffMainDiametersData = Data.CreatePushButtonData(takeOffMainDiametersAttr);
+			PushButtonData takeOffMainDiametersData = ButtonStructure.CreatePushButtonData(takeOffMainDiametersAttr);
 			#endregion
 
 			#region Duct split
@@ -140,7 +136,7 @@ namespace AddinManager.Tabs.Petersime.Panels
 				LargeImage = Tools.LoadLargeImage("ductSplit32x32.png"),
 				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData ductSplitData = Data.CreatePushButtonData(ductSplitAttr);
+			PushButtonData ductSplitData = ButtonStructure.CreatePushButtonData(ductSplitAttr);
 
 			//Add-in RT Duct split 2xF
 			AddinAttr rtDuctSplitAttr = new AddinAttr()
@@ -155,7 +151,7 @@ namespace AddinManager.Tabs.Petersime.Panels
 				LargeImage = Tools.LoadLargeImage("rtDuctSplit32x32.png"),
 				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData rtDuctSplitData = Data.CreatePushButtonData(rtDuctSplitAttr);
+			PushButtonData rtDuctSplitData = ButtonStructure.CreatePushButtonData(rtDuctSplitAttr);
 			#endregion
 
 			#region Exhausts
@@ -172,7 +168,7 @@ namespace AddinManager.Tabs.Petersime.Panels
 				LargeImage = Tools.LoadLargeImage("exhaustRun32x32.png"),
 				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData exhaustRunData = Data.CreatePushButtonData(exhaustRunAttr);
+			PushButtonData exhaustRunData = ButtonStructure.CreatePushButtonData(exhaustRunAttr);
 
 			//Add-in Exhaust offset
 			AddinAttr exhaustOffsetAttr = new AddinAttr()
@@ -187,7 +183,7 @@ namespace AddinManager.Tabs.Petersime.Panels
 				LargeImage = Tools.LoadLargeImage("exhaustOffset32x32.png"),
 				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData exhaustOffsetData = Data.CreatePushButtonData(exhaustOffsetAttr);
+			PushButtonData exhaustOffsetData = ButtonStructure.CreatePushButtonData(exhaustOffsetAttr);
 			#endregion
 
 			#region AHU
@@ -196,7 +192,7 @@ namespace AddinManager.Tabs.Petersime.Panels
 			{
 				Name = "AHU editor",
 				Title = "AHU editor",
-				AssemblyPath = $@"J:\Drawings REVIT FAMILIES\02 NEW\Aris\Projects\Mechanical\mechanical-ahu-editor\AhuEditor\bin\Debug\AhuEditor.dll",
+				AssemblyPath = $@"J:\Drawings REVIT FAMILIES\02 NEW\Aris\Projects\MechanicalPanel\mechanical-ahu-editor\AhuEditor\bin\Debug\AhuEditor.dll",
 				ClassName = "AhuEditor.Command",
 				ToolTip = "AHU Editor window",
 				LongDescription = "",
@@ -204,7 +200,7 @@ namespace AddinManager.Tabs.Petersime.Panels
 				LargeImage = Tools.LoadLargeImage("ahuEditor32x32.png"),
 				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\AHU editor.pdf")
 			};
-			PushButtonData ahuEditorData = Data.CreatePushButtonData(ahuEditorAttr);
+			PushButtonData ahuEditorData = ButtonStructure.CreatePushButtonData(ahuEditorAttr);
 
 			//Add-in Create 3D view
 			AddinAttr create3DViewAttr = new AddinAttr()
@@ -219,7 +215,7 @@ namespace AddinManager.Tabs.Petersime.Panels
 				LargeImage = Tools.LoadLargeImage("create3DView32x32.png"),
 				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData create3DViewData = Data.CreatePushButtonData(create3DViewAttr);
+			PushButtonData create3DViewData = ButtonStructure.CreatePushButtonData(create3DViewAttr);
 			#endregion
 
 			#region Accesorries
@@ -236,9 +232,8 @@ namespace AddinManager.Tabs.Petersime.Panels
 				LargeImage = Tools.LoadLargeImage("insertCvdVav32x32.png"),
 				Help = new ContextualHelp(ContextualHelpType.Url, $@"{Directories.Guidelines}\Coming soon.pdf")
 			};
-			PushButtonData insertCvdVavData = Data.CreatePushButtonData(insertCvdVavAttr);
+			PushButtonData insertCvdVavData = ButtonStructure.CreatePushButtonData(insertCvdVavAttr);
 			#endregion
-
-			#endregion
+		}
 	}
 }

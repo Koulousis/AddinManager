@@ -67,13 +67,16 @@
     <Compile Include="Attributes\PulldownButtonAttr.cs" />
     <Compile Include="Attributes\SplitButtonAttr.cs" />
     <Compile Include="AddinManager.cs" />
-    <Compile Include="Buttons\Data.cs" />
+    <Compile Include="Buttons\ButtonStructure.cs" />
     <Compile Include="Buttons\Ribbon.cs" />
     <Compile Include="Misc\Tools.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Attributes\AddinAttr.cs" />
     <Compile Include="Resources\Directories.cs" />
-    <Compile Include="Tabs\Petersime\Panels\Mechanical.cs" />
+    <Compile Include="Tabs\Petersime\Panels\DataPanel.cs" />
+    <Compile Include="Tabs\Petersime\Panels\ElectricalPanel.cs" />
+    <Compile Include="Tabs\Petersime\Panels\MechanicalPanel.cs" />
+    <Compile Include="Tabs\Petersime\Panels\PlumbingPanel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

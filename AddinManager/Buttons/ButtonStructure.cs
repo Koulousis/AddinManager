@@ -3,7 +3,7 @@ using Autodesk.Revit.UI;
 
 namespace AddinManager.Buttons
 {
-	public static class Data
+	public static class ButtonStructure
 	{
 		public static PushButtonData CreatePushButtonData(AddinAttr buttonAttr)
 		{

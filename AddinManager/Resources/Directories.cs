@@ -12,9 +12,9 @@ namespace AddinManager.Resources
 		public const string TestDlls = @"J:\Drawings REVIT FAMILIES\02 NEW\Aris\Addins\PetersimeV2\TestDLLs";
 		public const string Guidelines = @"J:\Drawings REVIT FAMILIES\02 NEW\Aris\Addins\PetersimeV2\Guidelines";
 
-		public const string MechanicalDlls = @"J:\Drawings REVIT FAMILIES\02 NEW\Aris\Addins\PetersimeV2\DLLs\Mechanical"; 
-		public const string PlumbingDlls = @"J:\Drawings REVIT FAMILIES\02 NEW\Aris\Addins\PetersimeV2\DLLs\Plumbing"; 
-		public const string ElectricalDlls = @"J:\Drawings REVIT FAMILIES\02 NEW\Aris\Addins\PetersimeV2\DLLs\Electrical"; 
+		public const string MechanicalDlls = @"J:\Drawings REVIT FAMILIES\02 NEW\Aris\Addins\PetersimeV2\DLLs\MechanicalPanel"; 
+		public const string PlumbingDlls = @"J:\Drawings REVIT FAMILIES\02 NEW\Aris\Addins\PetersimeV2\DLLs\PlumbingPanel"; 
+		public const string ElectricalDlls = @"J:\Drawings REVIT FAMILIES\02 NEW\Aris\Addins\PetersimeV2\DLLs\ElectricalPanel"; 
 		public const string DataDlls = @"J:\Drawings REVIT FAMILIES\02 NEW\Aris\Addins\PetersimeV2\DLLs\Data"; 
 	}
 }
