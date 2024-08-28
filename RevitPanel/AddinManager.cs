@@ -387,8 +387,6 @@ namespace RevitPanel
 			#endregion
 
 			#region Pipe splits
-			//Add-in PP-RCT split 3m
-			AddinAttr pprctSplit3mAttr = new AddinAttr()
 			//Add-in PP-RCT split
 			AddinAttr pprctSplitAttr = new AddinAttr()
 			{
