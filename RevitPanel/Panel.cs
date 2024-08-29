@@ -37,8 +37,8 @@ namespace RevitPanel
 			{
 				Name = "ODM Brackets",
 				Title = "ODM Brackets",
-				AssemblyPath = $@"{oldDeployedDlls}\SuspensionMarkers.dll",
-				ClassName = "SuspensionMarkers.ODMbrackets",
+				AssemblyPath = @"J:\Drawings REVIT FAMILIES\09 Projects\Addins\Mechanical\Suspension\mechanical-odm-brackets\OdmBrackets\bin\Debug\OdmBrackets.dll",
+				ClassName = "OdmBrackets.Command",
 				ToolTip = "Place all the suspension markers for ODM brackets + distance to roof",
 				LongDescription = "",
 				Image = LoadImage("odmBrackets16x16.png"),
