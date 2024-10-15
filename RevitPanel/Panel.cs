@@ -21,10 +21,10 @@ namespace RevitPanel
 	{
 		public Result OnStartup(UIControlledApplication application)
 		{
-			#region Variables
+			#region Constant variables
 			const string oldDeployedDlls = @"J:\Drawings REVIT FAMILIES\02 NEW\Aris\Addins\PetersimeV2\DLLs";
-			const string deployedDlls = @"J:\Drawings REVIT FAMILIES\02 NEW\Aris\Addins\PetersimeV2\TestDLLs";
-			const string guidelines = @"J:\Drawings REVIT FAMILIES\02 NEW\Aris\Addins\PetersimeV2\Guidelines";
+			const string deployedDlls = @"J:\Drawings REVIT FAMILIES\09 Projects\DLLs";
+			const string guidelines = @"J:\Drawings REVIT FAMILIES\09 Projects\Guidelines";
 			#endregion
 
 			#region Add-ins
@@ -37,7 +37,7 @@ namespace RevitPanel
 			{
 				Name = "ODM Brackets",
 				Title = "ODM Brackets",
-				AssemblyPath = @"J:\Drawings REVIT FAMILIES\09 Projects\Addins\Mechanical\Suspension\mechanical-odm-brackets\OdmBrackets\bin\Debug\OdmBrackets.dll",
+				AssemblyPath = $@"{deployedDlls}\OdmBrackets.dll",
 				ClassName = "OdmBrackets.Command",
 				ToolTip = "Place all the suspension markers for ODM brackets + distance to roof",
 				LongDescription = "",
@@ -694,11 +694,7 @@ namespace RevitPanel
 			#endregion
 
 			#endregion
-
-			#region Testing
 			
-			#endregion
-
 			#endregion
 
 			#region UI Elements
