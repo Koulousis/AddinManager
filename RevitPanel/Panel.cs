@@ -421,8 +421,8 @@ namespace RevitPanel
 			{
 				Name = "PP-RCT split all",
 				Title = "PP-RCT split all",
-				AssemblyPath = $@"{oldDeployedDlls}\SuspensionMarkers.dll",
-				ClassName = "SuspensionMarkers.PP_RCTSplitAll",
+				AssemblyPath = $@"{deployedDlls}\PpRctSplitAll.dll",
+				ClassName = "PpRctSplitAll.Command",
 				ToolTip = "Split all PP-RCT pipes",
 				LongDescription = "",
 				Image = LoadImage("pprctSplitAll16x16.png"),

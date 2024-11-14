@@ -71,10 +71,6 @@
     <Compile Include="AddinAttr.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-    <None Include="Panel.addin" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
