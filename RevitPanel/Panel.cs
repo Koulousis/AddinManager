@@ -568,7 +568,7 @@ namespace RevitPanel
 			{
 				Name = "Eagle eye layouts",
 				Title = "Eagle eye layouts",
-				AssemblyPath = $@"{oldDeployedDlls}\EagleEyeLayouts.dll",
+				AssemblyPath = $@"{deployedDlls}\EagleEyeLayouts.dll",
 				ClassName = "EagleEyeLayouts.Command",
 				ToolTip = "Export Eagle Eye layout images",
 				LongDescription = "",
@@ -699,12 +699,13 @@ namespace RevitPanel
 
 			#region UI Elements
 			//Ribbon panel
-			application.CreateRibbonTab("Petersime");
-			RibbonPanel mechanicalPanel = application.CreateRibbonPanel("Petersime", "Mechanical");
-			RibbonPanel electricalPanel = application.CreateRibbonPanel("Petersime", "Electrical");
-			RibbonPanel plumbingPanel = application.CreateRibbonPanel("Petersime", "Plumbing");
-			RibbonPanel dataPanel = application.CreateRibbonPanel("Petersime", "Data");
-			RibbonPanel planPanel = application.CreateRibbonPanel("Petersime", "Plan");
+			string tabName = "Petersime";
+			application.CreateRibbonTab(tabName);
+			RibbonPanel mechanicalPanel = application.CreateRibbonPanel(tabName, "Mechanical");
+			RibbonPanel electricalPanel = application.CreateRibbonPanel(tabName, "Electrical");
+			RibbonPanel plumbingPanel = application.CreateRibbonPanel(tabName, "Plumbing");
+			RibbonPanel dataPanel = application.CreateRibbonPanel(tabName, "Data");
+			RibbonPanel planPanel = application.CreateRibbonPanel(tabName, "Plan");
 			
 			#region Mechanical
 			//Suspension
