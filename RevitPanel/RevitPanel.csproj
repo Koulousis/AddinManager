@@ -64,6 +64,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DebugHelper.cs" />
     <Compile Include="PulldownButtonAttr.cs" />
     <Compile Include="SplitButtonAttr.cs" />
     <Compile Include="Panel.cs" />
