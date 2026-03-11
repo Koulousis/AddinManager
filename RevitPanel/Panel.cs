@@ -523,8 +523,8 @@ namespace RevitPanel
 			{
 				Name = "Dwfx | Dwg | Pdf",
 				Title = "Dwfx | Dwg | Pdf",
-				AssemblyPath = $@"{deployedDlls}\SheetExport.dll",
-				ClassName = "SheetExport.Command",
+				AssemblyPath = $@"{oldDeployedDlls}\SheetExport.dll",
+				ClassName = "SheetExport.SheetExport",
 				ToolTip = "Exports files,data and sheets from Revit",
 				LongDescription = "",
 				Image = LoadImage("DwfxDwgPdf16x16.png"),
@@ -532,6 +532,21 @@ namespace RevitPanel
 				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelines}\Dwfx - Dwg - Pdf.pdf")
 			};
 			PushButtonData DwfxDwgPdfData = CreateButtonData(DwfxDwgPdfAttr);
+
+			//Add-in Dwfx | Dwg | Pdf (New)
+			AddinAttr DwfxDwgPdfNewAttr = new AddinAttr()
+			{
+				Name = "Dwfx | Dwg | Pdf (New)",
+				Title = "Dwfx | Dwg | Pdf (New)",
+				AssemblyPath = $@"{deployedDlls}\SheetExport.dll",
+				ClassName = "SheetExport.Command",
+				ToolTip = "Exports files, data and sheets from Revit (new version)",
+				LongDescription = "",
+				Image = LoadImage("DwfxDwgPdf16x16.png"),
+				LargeImage = LoadLargeImage("DwfxDwgPdf32x32.png"),
+				Help = new ContextualHelp(ContextualHelpType.Url, $@"{guidelines}\Dwfx - Dwg - Pdf.pdf")
+			};
+			PushButtonData DwfxDwgPdfNewData = CreateButtonData(DwfxDwgPdfNewAttr);
 
 			//Add-in Bumper lengths
 			AddinAttr bumperLengthsAttr = new AddinAttr()
@@ -880,7 +895,7 @@ namespace RevitPanel
 				LargeImage = LoadLargeImage("dataExport32x32.png")
 			};
 			PulldownButtonData dataExportPulldownButtonData = CreatePulldownButtonData(dataExportPulldownButtonAttr);
-			CreateRibbonPulldownButtons(dataPanel, dataExportPulldownButtonData, new List<PushButtonData>() { DwfxDwgPdfData, bumperLengthsData, translationsData, eagleEyeLayoutsData });
+			CreateRibbonPulldownButtons(dataPanel, dataExportPulldownButtonData, new List<PushButtonData>() { DwfxDwgPdfData, DwfxDwgPdfNewData, bumperLengthsData, translationsData, eagleEyeLayoutsData });
 
 			//Data to validate
 			PulldownButtonAttr dataValidationPulldownButtonAttr = new PulldownButtonAttr()
